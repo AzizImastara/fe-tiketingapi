@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
+.hero--caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero--caption h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #a0a3bd;
+}
+
+.hero--caption h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: #5f2eea;
+}
+
+.hero--caption h1 {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.hero--img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #5f2eea;
+  margin-bottom: 24px;
+}
+
+.showing__caption h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.movie {
+  display: flex;
+  justify-content: space-between;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.movie__show {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.movie__show--content {
+  display: none;
+}
+
+.movie__show--content h6 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #14142b;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.movie__show--content p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a0a3bd;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.movie__show--content button {
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #5f2eea;
+  color: #5f2eea;
+  border-radius: 4px;
+}
+
+.movie__show--content button:last-child {
+  background-color: #5f2eea;
+  color: #fff;
+}
+
+.movie__show:hover {
+  cursor: pointer;
+}
+
+.movie__show:hover .movie__show--content {
+  display: block;
+}
+
+.upcoming {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #5f2eea;
+  margin-top: 24px;
+}
+
+.upcoming__caption h3 {
+  color: #14142b;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.upcoming__month {
+  padding-top: 40px;
+}
+
+.upcoming__month ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.upcoming__month--list {
+  border: 1px solid #9570fe;
+  border-radius: 4px;
+  width: 100%;
+  margin: 12px;
+}
+
+.upcoming__month--link {
+  text-decoration: none;
+  color: #9570fe;
+}
+
+.upcoming__month--list:hover {
+  color: #fff;
+  background-color: #5f2eea;
+}
+
+.upcoming__month--link:hover {
+  color: #fff;
+}
+
+.movie__upcoming {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 60px 0;
+}
+
+.movie__upcoming--detail {
+  text-align: center;
+}
+
+.movie__upcoming--detail h4 {
+  font-size: 24px;
+  color: #14142b;
+  padding-top: 24px;
+}
+
+.movie__upcoming--detail p {
+  font-size: 12px;
+  color: #a0a3bd;
+}
+
+.movie__upcoming--detail button {
+  width: 100%;
+  border: 1px solid #5f2eea;
+  color: #5f2eea;
+  padding: 4px 0;
+  border-radius: 4px;
+}
+
+.join__desc h2 {
+  color: #4e4b66;
+  font-size: 24px;
+}
+
+.join__desc h1 {
+  color: #5f2eea;
+  font-size: 48px;
+}
+
+.join__input {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.join__input input {
+  padding: 12px;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+
+.join__caption p {
+  font-size: 12px;
+  color: #6e7191;
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .hero {
+    flex-direction: column;
+    /* display: flex; */
+    /* justify-content: center; */
+  }
+
+  .hero--caption {
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  .hero--caption h2 {
+    font-size: 20px;
+  }
+
+  .hero--caption h1 {
+    font-size: 40px;
+  }
+
+  .hero--img {
+    width: 100%;
+  }
+
+  .hero--img img {
+    width: 100%;
+  }
+
+  .hero__bg {
+    background-color: #d6d8e7;
+    padding: 24px 0;
+  }
+
+  .movie {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .movie__show {
+    margin: 0 12px 0 12px;
+  }
+
+  .movie__show--content button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .upcoming__month {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .movie__upcoming {
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+
+  .movie__upcoming--detail {
+    margin: 0 12px 0 12px;
+  }
+
+  .join__input {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .join__input input {
+    margin: 0 0 12px 0;
+  }
+
+  .join__input button {
+    padding: 12px;
+  }
+}

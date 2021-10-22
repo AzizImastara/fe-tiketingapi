@@ -1,3 +1,163 @@
-h1 {
-  color: orange;
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
+.image__left {
+  background-image: url("../../../assets/img/coverlogin.png");
+  height: 1024px;
+  background-size: cover;
+}
+
+.image__left--logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(43, 21, 107, 0.7);
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.image__left--logo h3 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.form__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__right--detail {
+  padding: 60px;
+}
+
+.form__right h2 {
+  font-size: 48px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.form__right span {
+  font-size: 18px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.form__right--input p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4e4b66;
+}
+
+.form__right--input input {
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.form__right--button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 12px;
+  color: #f7f7fc;
+  background-color: #5f2eea;
+  outline: none;
+  border: none;
+}
+
+.form__right--input input {
+  border: 1px solid #b3b3b8;
+}
+
+.sign--forgot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign--forgot::after {
+  content: "Reset now";
+  text-decoration: underline;
+  color: #5f2eea;
+  margin: 12px 0 0 4px;
+}
+
+.sign--forgot p {
+  color: #8692a6;
+  margin-top: 12px;
+  margin: 12px 0 0 0;
+}
+
+.sign-or {
+  text-align: center;
+}
+
+.sign-or p {
+  width: 20%;
+  font-size: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 4px;
+  margin: 0;
+  color: #b3b3b8;
+}
+
+.sign-or-line {
+  border-top: 1px solid #b3b3b8;
+  width: 30%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon__button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.icon__button--content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon__button--content p {
+  margin: 0 0 0 12px;
+}
+
+.icon__button button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e5e5e5;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.icon__button button:nth-child(1) {
+  margin-right: 12px;
+}
+
+.icon__button button:nth-child(2) {
+  margin-left: 12px;
+}
+
+@media (max-width: 991.98px) {
+  .form__right--detail span {
+    display: none;
+  }
+  .icon__button p {
+    display: none;
+  }
 }

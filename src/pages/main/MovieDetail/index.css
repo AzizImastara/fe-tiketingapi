@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
+.hero__left {
+  margin-top: 40px;
+}
+
+.hero__right {
+  margin-top: 40px;
+}
+
+.hero__left--border {
+  border: 2px solid #dedede;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__left--border img {
+  padding: 24px 0;
+  width: 70%;
+}
+
+.hero__right h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #121212;
+}
+
+.hero__right h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #14142b;
+}
+
+.hero__right h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #4e4b66;
+}
+
+.hero__right--desc {
+  padding: 20px 10px;
+}
+
+.hero__right--desc p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #8692a6;
+}
+
+.hero__right--synopsis h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4e4b66;
+}
+
+.hero__right--synopsis p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #8692a6;
+}
+
+.showtimes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.showtimes h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #14142b;
+  padding: 32px;
+}
+
+.dropdown button {
+  width: 100%;
+  padding: 12px 40px;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown button i {
+  margin-right: 16px;
+  margin-left: -16px;
+}
+
+.dropdown button img {
+  margin-right: 16px;
+  margin-left: -16px;
+}
+
+.schedule__movie {
+  margin: 12px;
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(186, 186, 186, 0.24);
+}
+
+.schedule__movie--adress h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.schedule__movie--adress p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #6e7191;
+}
+
+.schedule__movie--time p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.schedule__movie--price {
+  padding: 12px;
+}
+
+.schedule__movie--price p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.schedule__movie--price h6 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.schedule__movie button {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .hero {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__right h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__right h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero__right--flex {
+    display: flex;
+    /* background-color: #14142b; */
+    justify-content: space-between;
+  }
+
+  .showtimes form {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dropdown {
+    margin-bottom: 24px;
+  }
+
+  .dropdown button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 12px 40px; */
+  }
+
+  .schedule__row {
+    flex-direction: column;
+  }
+
+  .schedule__movie--adress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .schedule__movie--adress h4 {
+    display: none;
+  }
+
+  .schedule__movie--cinema {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+}
