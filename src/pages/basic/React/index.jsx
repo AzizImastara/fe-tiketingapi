@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../../../components/Navbar";
 import styles from "./BasicReact.module.css";
 import { Button, Modal } from "react-bootstrap";
+import CardMovie from "../../../components/Card";
 
 class BasicReact extends Component {
   constructor() {
@@ -73,6 +74,10 @@ class BasicReact extends Component {
     });
   };
 
+  handleUpdateMovie = (data) => {
+    console.log("Movie Is Update", data);
+  };
+
   render() {
     // console.log("RENDER JSX IS RUNNING !");
     return (
@@ -137,6 +142,10 @@ class BasicReact extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
+
+        <hr />
+        {/* COMPONENT COMUNICATION */}
+        {/* <CardMovie handleUpdate={this.handleUpdateMovie} /> */}
       </>
     );
   }
