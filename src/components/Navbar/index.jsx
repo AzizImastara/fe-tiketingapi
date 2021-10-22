@@ -10,7 +10,7 @@ class Navbar extends Component {
   }
 
   handleLogout = () => {
-    console.log("Logout");
+    // console.log("Logout");
     this.props.history.push("/login");
   };
 
@@ -21,7 +21,8 @@ class Navbar extends Component {
       <>
         <h1>{this.props.name}</h1>
         {/* <a href="localhost:3000/basic-detail">Detail</a> */}
-        <Link to="/basic-detail">Detail</Link> | <button onClick={this.handleLogout}>Logout</button>
+        <Link to="/basic-detail">Detail</Link> | <Link to="basic-home">Home</Link> |{" "}
+        <button onClick={this.handleLogout}>Logout</button>
       </>
     );
   }
