@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Navbar from "../../../components/Navbar";
+import Navs from "../../../components/Navbar";
 import styles from "./BasicReact.module.css";
 import { Button, Modal } from "react-bootstrap";
 import CardMovie from "../../../components/Card";
+import Footer from "../../../components/Footer";
 
 class BasicReact extends Component {
   constructor() {
@@ -82,8 +83,9 @@ class BasicReact extends Component {
     // console.log("RENDER JSX IS RUNNING !");
     return (
       <>
+        <Navs name="Ohto Yaeger" />
+        <Footer />
         <h1>Basic React Page!</h1>
-        <Navbar name="Ohto Yaeger" />
         <h1>{this.state.name}</h1>
         {this.state.data.map((item, index) => (
           <div key={item.movieId}>

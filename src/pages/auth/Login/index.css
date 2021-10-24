@@ -86,8 +86,7 @@
   align-items: center;
 }
 
-.sign--forgot::after {
-  content: "Reset now";
+.sign--forgot a {
   text-decoration: underline;
   color: #5f2eea;
   margin: 12px 0 0 4px;

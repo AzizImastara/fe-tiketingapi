@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../../../components/Navbar";
+import Navs from "../../../components/Navbar";
 import Card from "../../../components/Card";
 import axios from "../../../utils/axios";
 import Pagination from "react-paginate";
@@ -64,7 +64,7 @@ class Home extends Component {
       <>
         <div className="container text-center">
           <h1>Home</h1>
-          <Navbar />
+          <Navs />
           <hr />
           <div className="row">
             {data.map((item) => (

@@ -1,10 +1,62 @@
 import React, { Component } from "react";
+import axios from "../../../utils/axios";
 import "./index.css";
 import logo from "../../../assets/img/tickitz 1.png";
 import gIcon from "../../../assets/img/googleIcon.svg";
 import fIcon from "../../../assets/img/facebookIcon.svg";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      form: {
+        email: "",
+        password: ""
+      },
+      isError: false,
+      msg: ""
+    };
+  }
+
+  handleChangeForm = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value
+      }
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("auth/login", this.state.form)
+      .then((res) => {
+        // console.log(res.data.data.token);
+        localStorage.setItem("token", res.data.data.token);
+        this.props.history.push("/Home");
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        this.setState({
+          isError: true,
+          msg: err.response.data.msg
+        });
+        setTimeout(() => {
+          this.setState({
+            isError: false,
+            msg: ""
+          });
+        }, 2000);
+      });
+  };
+
+  handleReset = (event) => {
+    event.preventDefault();
+    // console.log("Submit Reset");
+  };
+
   render() {
     return (
       <>
@@ -22,17 +74,29 @@ class Login extends Component {
             <div className="form__right--detail">
               <h2>Sign In</h2>
               <span>Sign in with your data that you entered during your registration</span>
-              <div className="form__right--input">
+              {this.state.isError && <div className="alert alert-danger">{this.state.msg}</div>}
+              <form onSubmit={this.handleSubmit} className="form__right--input">
                 <p>Email</p>
-                <input type="email" placeholder="Write your email" />
+                <input
+                  type="email"
+                  placeholder="Write your email"
+                  name="email"
+                  onChange={this.handleChangeForm}
+                />
                 <p>Password</p>
-                <input type="password" placeholder="Write your password" />
+                <input
+                  type="password"
+                  placeholder="Write your password"
+                  name="password"
+                  onChange={this.handleChangeForm}
+                />
                 <div className="form__right--button">
-                  <button>Sign In</button>
+                  <button type="submit">Sign In</button>
                 </div>
-              </div>
+              </form>
               <div className="sign--forgot">
                 <p>Forgot your password?</p>
+                <Link to="/basic-react">Reset now</Link>
               </div>
               <div className="sign-or">
                 <span className="sign-or-line"></span>

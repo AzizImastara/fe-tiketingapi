@@ -1,0 +1,32 @@
+.icon {
+  margin: 0 24px;
+}
+a.nav-link {
+  color: #414141;
+  /* padding: 0; */
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #414141 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* a.dropdown-toogle.nav-link::after {
+  margin: 0;
+} */
+
+@media (max-width: 991.98px) {
+  a.nav-link {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  form.d-flex {
+    display: flex;
+    justify-content: center;
+  }
+  .dropdown-toggle::after {
+    vertical-align: 0;
+  }
+}

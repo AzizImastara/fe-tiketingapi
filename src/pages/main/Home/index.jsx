@@ -1,11 +1,49 @@
 import React, { Component } from "react";
+import Navs from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+import Card from "../../../components/Card";
 import "./index.css";
 import hero from "../../../assets/img/Group 14.png";
+import axios from "../../../utils/axios";
 
 class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+      page: 1,
+      limit: 3,
+      pageInfo: {}
+    };
+  }
+
+  componentDidMount() {
+    this.getDataMovie();
+  }
+
+  getDataMovie = () => {
+    axios
+      .get(`movie?page=${this.state.page}&limit=${this.state.limit}`)
+      .then((res) => {
+        // console.log(res.data.data);
+        this.setState({
+          data: res.data.data,
+          pageInfo: res.data.pagination
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  handleDetail = (data) => {
+    this.props.history.push(`/basic-detail/${data}`);
+  };
+
   render() {
     return (
       <>
+        <Navs />
         <div className="container">
           <div className="row hero">
             <div className="col-6 hero--caption">
@@ -29,50 +67,13 @@ class Home extends Component {
               </div>
             </div>
             <div className="movie">
-              <div className="movie__show">
-                {/* <img src="assets/img/Spiderman.png" alt="movie__show" /> */}
-                <div className="movie__show--content">
-                  <h6>Spider-Man: Homecoming</h6>
-                  <p>Action, Adventure, Sci-FI</p>
-                  <button className="movie__show--content--btn">Details</button>
-                  <button className="movie__show--content--btn">Book now</button>
-                </div>
-              </div>
-              <div className="movie__show">
-                {/* <img src="assets/img/Lionking.png" alt="movie__show" /> */}
-                <div className="movie__show--content">
-                  <h6>Spider-Man: Homecoming</h6>
-                  <p>Action, Adventure, Sci-FI</p>
-                  <button>Details</button>
-                  <button>Book now</button>
-                </div>
-              </div>
-              <div className="movie__show">
-                {/* <img src="assets/img/Johnwick.png" alt="movie__show" /> */}
-                <div className="movie__show--content">
-                  <h6>Spider-Man: Homecoming</h6>
-                  <p>Action, Adventure, Sci-FI</p>
-                  <button>Details</button>
-                  <button>Book now</button>
-                </div>
-              </div>
-              <div className="movie__show">
-                {/* <img src="assets/img/Spiderman.png" alt="movie__show" /> */}
-                <div className="movie__show--content">
-                  <h6>Spider-Man: Homecoming</h6>
-                  <p>Action, Adventure, Sci-FI</p>
-                  <button>Details</button>
-                  <button>Book now</button>
-                </div>
-              </div>
-              <div className="movie__show">
-                {/* <img src="assets/img/Lionking.png" alt="movie__show" /> */}
-                <div className="movie__show--content">
-                  <h6>Spider-Man: Homecoming</h6>
-                  <p>Action, Adventure, Sci-FI</p>
-                  <button>Details</button>
-                  <button>Book now</button>
-                </div>
+              <div className="row">
+                {this.state.data &&
+                  this.state.data.map((item) => (
+                    <div className="col-md-4" key={item.id}>
+                      <Card data={item} handleDetail={this.handleDetail} />
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -143,35 +144,13 @@ class Home extends Component {
 
         <div className="container">
           <div className="movie__upcoming">
-            <div className="movie__upcoming--detail">
-              {/* <img src="assets/img/Blackwidow.png" alt="movie__upcoming" /> */}
-              <h4>Black Widow</h4>
-              <p>Action, Adventure, Sci-Fi</p>
-              <button>Details</button>
-            </div>
-            <div className="movie__upcoming--detail">
-              {/* <img src="assets/img/Witches.png" alt="movie__upcoming" /> */}
-              <h4>The Witches</h4>
-              <p>Action, Comedy, Family</p>
-              <button>Details</button>
-            </div>
-            <div className="movie__upcoming--detail">
-              {/* <img src="assets/img/Tenet.png" alt="movie__upcoming" /> */}
-              <h4>Tenet</h4>
-              <p>Action, Sci-Fi</p>
-              <button>Details</button>
-            </div>
-            <div className="movie__upcoming--detail">
-              {/* <img src="assets/img/Blackwidow.png" alt="movie__upcoming" /> */}
-              <h4>Black Widow</h4>
-              <p>Action, Adventure, Sci-Fi</p>
-              <button>Details</button>
-            </div>
-            <div className="movie__upcoming--detail">
-              {/* <img src="assets/img/Witches.png" alt="movie__upcoming" /> */}
-              <h4>The Witches</h4>
-              <p>Action, Comedy, Family</p>
-              <button>Details</button>
+            <div className="row">
+              {this.state.data &&
+                this.state.data.map((item) => (
+                  <div className="col-md-4" key={item.id}>
+                    <Card data={item} handleDetail={this.handleDetail} />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -194,6 +173,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
