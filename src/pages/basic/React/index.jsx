@@ -3,20 +3,23 @@ import Navs from "../../../components/Navbar";
 import styles from "./BasicReact.module.css";
 import { Button, Modal } from "react-bootstrap";
 import CardMovie from "../../../components/Card";
-import Footer from "../../../components/Footer";
 
 class BasicReact extends Component {
   constructor() {
     super();
     // console.log("CONSTRUCTOR IS RUNNING !");
     this.state = {
-      name: "Aziz Imastara",
-      data: []
+      name: "Bagus",
+      data: [],
+      search: "",
+      show: false
     };
+    this.handleClick3 = this.handleClick3.bind(this);
   }
-
+  // LIFECYCLE
   componentDidMount() {
-    // console.log("COMPONENT DID MONTH IS RUNNING !");
+    // console.log("COMPONENT DIDMOUNT IS RUNNING !");
+    // GET DATA
     this.setState({
       data: [
         {
@@ -30,21 +33,28 @@ class BasicReact extends Component {
       ]
     });
   }
-
   componentDidUpdate() {
-    // console.log("COMPONENT DID UPDATE IS RUNNING!");
+    //ketika data/element terupdate
+    // console.log("COMPONENT DIDUPDATE IS RUNNING");
+    // this.setState({
+    //   name: "Bagus Tri Harjanto"
+    // });
   }
-
   componentWillUnmount() {
-    // console.log("COMPONENT WILLUNMONTH IS RUNNING !");
+    //ketika data/element terhapus/menghilang
+    // console.log("COMPONENT WILLUNMOUNT IS RUNNING");
   }
-
-  handleClick = () => {
-    console.log("click !");
+  handleClick = (data) => {
+    console.log("Click !");
   };
   handleClick2 = (data) => {
-    console.log("click with data " + data);
+    // console.log(this);
+    console.log("Click with Data = " + data);
   };
+  handleClick3() {
+    console.log(this);
+    console.log("Click 3");
+  }
 
   changeText = (event) => {
     console.log(event.target.value);
@@ -76,17 +86,18 @@ class BasicReact extends Component {
   };
 
   handleUpdateMovie = (data) => {
-    console.log("Movie Is Update", data);
+    console.log("MOVIE IS UPDATE", data);
   };
 
   render() {
     // console.log("RENDER JSX IS RUNNING !");
+    // console.log(this.state.data)
     return (
       <>
-        <Navs name="Ohto Yaeger" />
-        <Footer />
-        <h1>Basic React Page!</h1>
+        <h1>Basic React Page !</h1>
+        <Navs name="Bagus TH" />
         <h1>{this.state.name}</h1>
+        {/* MAPPING */}
         {this.state.data.map((item, index) => (
           <div key={item.movieId}>
             <h2>{item.movieName}</h2>
@@ -95,21 +106,23 @@ class BasicReact extends Component {
         {/* EVENT */}
         <button onClick={this.handleClick}>Click Me 1</button>
         <button onClick={() => this.handleClick2(1)}>Click Me 2</button>
-
+        <button onClick={this.handleClick3}>Click Me 3</button>
         <hr />
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search ..."
           name="search"
           onChange={(event) => this.changeText(event)}
         />
-        <h5>Your keyword seacrh is {this.state.search}</h5>
-        {/* SHORT LOGIC */}
-        <input type="text" placeholder="Search..." name="search" onKeyPress={this.handleSearch} />
-        {this.state.search && <h5>Your keyword seacrh is {this.state.search}</h5>}
-        {/* onChange = akan bekerja setiap user memasukan nilai ke dalam form input */}
-        {/* onKeyPress = sama seperti onChange tetapi bisa diberikan tambahan kondisi ketika dijalankan */}
+        <h5>Your keyword search is {this.state.search}</h5>
+        <input type="text" placeholder="Search ..." name="search" onKeyPress={this.handleSearch} />
+
+        {/* onchange = akan berjalan setiap user memasukkan nilai kedalm form input */}
+        {/* onKeyPress = sama seperti onchange tetapi bisa diberikan tambahan kondisi ketika dijalankan */}
         <hr />
+        {/* CONDITIONAL */}
+        {/* SHORT LOGIC */}
+        {this.state.search && <h5>Your keyword search is {this.state.search}</h5>}
         {/* TERNARY */}
         {this.state.data.length > 0 ? (
           this.state.data.map((item, index) => (
@@ -122,10 +135,12 @@ class BasicReact extends Component {
         )}
         <hr />
         {/* STYLE IN REACT */}
-        <h1 className={styles.headerTitle}>Hello World</h1>
+        <h1 className={`${styles.header_title} ${styles.headerTitleSize} text-center`}>
+          Hello World
+        </h1>
         {/* BOOTSTRAP */}
         <button className="btn btn-primary">Primary</button>
-        <Button variant="danger">Primary</Button>
+        <Button variant="primary">Primary</Button>
         <Button variant="primary" onClick={this.handleShow}>
           Launch demo modal
         </Button>

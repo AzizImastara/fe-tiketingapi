@@ -8,7 +8,7 @@ class Order extends Component {
         <div className="detail__bg">
           <div className="container">
             <div className="row detail">
-              <div className="col-lg-7 col-sm-6 movie">
+              <div className="col-lg-7 col-sm-6 moviee">
                 <h4 className="movie__none">Movie Selected</h4>
                 <div className="movie__selected">
                   <h5>Spider-Man: Homecoming</h5>

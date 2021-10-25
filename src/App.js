@@ -4,6 +4,7 @@ import BasicReact from "./pages/basic/React";
 import BasicLogin from "./pages/basic/Login";
 import BasicHome from "./pages/basic/Home";
 import BasicMovieDetail from "./pages/basic/DetailMovie";
+import BasicOrder from "./pages/basic/Order";
 import Login from "./pages/auth/Login";
 import Home from "./pages/main/Home";
 import MovieDetail from "./pages/main/MovieDetail";
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/basic-login" exact component={BasicLogin} />
           <Route path="/basic-home" exact component={BasicHome} />
           <Route path="/basic-detail/:movieId" exact component={BasicMovieDetail} />
+          <Route path="/basic-order" exact component={BasicOrder} />
           <Route path="/Login" exact component={Login} />
           <Route path="/Home" exact component={Home} />
           <Route path="/MovieDetail" exact component={MovieDetail} />

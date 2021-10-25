@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "../../../utils/axios";
+import { Toast } from "react-bootstrap";
 
 class Login extends Component {
   constructor() {
@@ -83,6 +84,16 @@ class Login extends Component {
               Submit
             </button>
           </form>
+          <div style={{ position: "fixed", bottom: "20px", right: "20px" }}>
+            <Toast show={this.state.isError}>
+              <Toast.Header closeButton={false}>
+                <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                <strong className="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+              </Toast.Header>
+              <Toast.Body>{this.state.msg}</Toast.Body>
+            </Toast>
+          </div>
         </div>
       </>
     );

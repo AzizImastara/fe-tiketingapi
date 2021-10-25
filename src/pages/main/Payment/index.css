@@ -1,0 +1,138 @@
+.payment__bg {
+  background-color: #e5e5e5;
+  padding: 2rem 0;
+}
+
+.payment__page {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.payment__info--component {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.payment__info--component--desc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 12px 0;
+}
+.payment__info--component--desc p {
+  margin: 0;
+}
+.payment__info--component--desc p:nth-child(2) {
+  text-align: right;
+}
+
+.payment__info--choose--container {
+  background-color: #fff;
+  padding: 2rem;
+}
+.payment__info--choose {
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+  gap: 12px;
+}
+.payment__info--choose button {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px;
+  border: 2px solid #dedede;
+  outline: none;
+  background-color: #fff;
+}
+.payment__info--choose button img {
+  height: 30px;
+  width: auto;
+}
+.sign-or {
+  text-align: center;
+}
+
+.sign-or p {
+  width: 20%;
+  font-size: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 4px;
+  margin: 0;
+  color: #a0a3bd;
+}
+
+.sign-or-line {
+  border-top: 1px solid #dedede;
+  width: 30%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sign--forgot {
+  display: flex;
+  justify-content: center;
+}
+
+.sign--forgot p:nth-child(2) {
+  color: #2b156bcc;
+  padding-left: 4px;
+}
+
+.payment__button {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.payment__button button {
+  width: 40%;
+  padding: 12px;
+}
+.payment__button button:nth-child(1) {
+  color: #5f2eea;
+  border: 1px solid #5f2eea;
+}
+
+.personal__info--component {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.personal__info--component p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #696f79;
+}
+
+.personal__info--component input {
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+  border: 2px solid #e6e6e6;
+}
+.personal__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #f4b740;
+  background: rgba(244, 183, 64, 0.3);
+  margin-top: 24px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.personal__error p {
+  font-size: 16px;
+  color: #4e4b66;
+  margin: 0 0 0 16px;
+}
+
+.personal__error i {
+  margin-right: 12px;
+}
