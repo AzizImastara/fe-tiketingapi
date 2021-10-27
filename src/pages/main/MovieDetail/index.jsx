@@ -18,15 +18,14 @@ class MovieDetail extends Component {
       timeSchedule: "",
       dateSchedule: dateNow,
       totalPayment: 20,
+      price: 0,
+      premiere: "",
       // ==================
       dataSchedule: [],
       dataDetailMovie: []
     };
   }
   handleChangeDate = (event) => {
-    // if (condition jika user memilih tanggal hari sebelumnya) {
-    //   console.log("tanggal tidak bisa di akses");
-    // }
     this.setState(
       {
         dateSchedule: event.target.value
@@ -44,27 +43,37 @@ class MovieDetail extends Component {
       },
       () => {
         // proses pengecekan apakah time schedule berada di dalam list time schedule
-        const { movieId, scheduleId, dateSchedule, timeSchedule, totalPayment } = this.state;
-        // console.log(this.state.movieId);
-        // console.log(this.state.scheduleId);
-        // console.log(this.state.dateSchedule);
-        // console.log(this.state.timeSchedule);
-        this.props.history.push("/Order", {
+        const {
           movieId,
           scheduleId,
           dateSchedule,
           timeSchedule,
-          totalPayment
+          totalPayment,
+          dataDetailMovie,
+          price,
+          premiere
+        } = this.state;
+        this.props.history.push("/Order", {
+          dataDetailMovie,
+          movieId,
+          scheduleId,
+          dateSchedule,
+          timeSchedule,
+          totalPayment,
+          price,
+          premiere
         });
       }
     );
   };
 
-  handleTimeSchedule = (data) => {
-    // console.log(data);
+  handleTimeSchedule = (data, price, premiere) => {
+    console.log(data);
     alert("You Click Time " + data);
     this.setState({
-      timeSchedule: data
+      timeSchedule: data,
+      price: price,
+      premiere: premiere
     });
   };
 
@@ -85,7 +94,7 @@ class MovieDetail extends Component {
 
   getSchedule = () => {
     axios
-      .get("schedule?page=1")
+      .get("schedule")
       .then((res) => {
         console.log(res, "res");
         this.setState({
@@ -104,7 +113,7 @@ class MovieDetail extends Component {
 
   render() {
     // console.log(this.state.dataDetailMovie);
-    console.log(this.state.dataSchedule);
+    // console.log(this.state.dataSchedule);
     return (
       <>
         <Navs />
@@ -114,7 +123,11 @@ class MovieDetail extends Component {
               <div className="col-4 hero__left">
                 <div className="hero__left--border">
                   <img
-                    src={`http://localhost:3001/uploads/movie/${this.state.dataDetailMovie[0].image}`}
+                    src={
+                      this.state.dataDetailMovie[0].image
+                        ? `http://localhost:3001/uploads/movie/${this.state.dataDetailMovie[0].image}`
+                        : blank
+                    }
                   />
                 </div>
               </div>
@@ -176,9 +189,13 @@ class MovieDetail extends Component {
                       </div>
                     </div>
                     <div className="row">
-                      {item.time.map((item, index) => (
+                      {item.time.map((time, index) => (
                         <div key={index} className="col schedule__movie--time">
-                          <p onClick={() => this.handleTimeSchedule(item)}>{item}</p>
+                          <p
+                            onClick={() => this.handleTimeSchedule(time, item.price, item.premiere)}
+                          >
+                            {time}
+                          </p>
                         </div>
                       ))}
 
@@ -189,7 +206,7 @@ class MovieDetail extends Component {
                         <p>Price</p>
                       </div>
                       <div className="col schedule__movie--price">
-                        <h6>$10.00/seat</h6>
+                        <h6>${item.price}/seat</h6>
                       </div>
                     </div>
                     <button className="btn btn-primary" onClick={() => this.handleBooking(1)}>

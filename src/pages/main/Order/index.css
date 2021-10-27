@@ -37,13 +37,17 @@
   padding: 8px;
 }
 
-.movie__selected button {
+.movie__selected a {
   color: #5f2eea;
   border-radius: 8px;
   background-color: #d6d8e7;
   padding: 12px;
   border: none;
   font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .order__background {

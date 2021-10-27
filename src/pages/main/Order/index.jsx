@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./index.css";
 import Seat from "../../../components/Seat";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import cineone from "../../../assets/img/cineone-mini.png";
 
 class Order extends Component {
   constructor(props) {
@@ -8,11 +11,14 @@ class Order extends Component {
     this.state = {
       listSeat: ["A", "B", "C"],
       selectedSeat: [],
-      reservedSeat: ["A1", "C7"],
+      reservedSeat: [],
       movieId: props.location.state ? props.location.state.movieId : "",
       scheduleId: props.location.state ? props.location.state.scheduleId : "",
       timeSchedule: props.location.state ? props.location.state.timeSchedule : "",
-      dateSchedule: props.location.state ? props.location.state.dateSchedule : ""
+      dateSchedule: props.location.state ? props.location.state.dateSchedule : "",
+      dataDetailMovie: props.location.state ? props.location.state.dataDetailMovie : [],
+      price: props.location.state ? props.location.state.price : "",
+      premiere: props.location.state ? props.location.state.premiere : ""
     };
   }
   componentDidMount() {
@@ -65,7 +71,9 @@ class Order extends Component {
       selectedSeat: []
     });
   };
+
   render() {
+    // console.log(this.state.dataDetailMovie, "....");
     return (
       <>
         <div className="detail__bg">
@@ -74,12 +82,13 @@ class Order extends Component {
               <div className="col-lg-7 col-sm-6 moviee">
                 <h4 className="movie__none">Movie Selected</h4>
                 <div className="movie__selected">
-                  <h5>Spider-Man: Homecoming</h5>
-                  <button>Change movie</button>
+                  <h5>{this.state.dataDetailMovie[0].name}</h5>
+                  <Link to="/Home">Change movie</Link>
                 </div>
                 <div className="movie__seat">
                   <h4>Choose Your Seat</h4>
                 </div>
+
                 <div className="seat">
                   {" "}
                   {this.state.listSeat.map((item, index) => (
@@ -106,24 +115,24 @@ class Order extends Component {
                 <h4>Order Info</h4>
                 <div className="order__background">
                   <div className="order__header">
-                    <img src="assets/img/cineone-mini.png" alt="cineone-mini" />
-                    <h5>CineOne21 Cinema</h5>
+                    <img src={cineone} alt="cineone-mini" />
+                    <h5>{this.state.premiere}</h5>
                   </div>
                   <div className="order__detail--title">
-                    <p>Spider-Man: Homecoming</p>
+                    <p>{this.state.dataDetailMovie[0].name}</p>
                   </div>
                   <div className="row order__detail">
                     <div className="col order__detail--info">
                       <p>Movie selected</p>
-                      <p>Tuesday, 07 July 2020</p>
+                      <p>{moment(this.state.dateSchedule).format("dddd MMM YYYY")}</p>
                       <p>One ticket price</p>
                       <p>Seat choosed</p>
                     </div>
                     <div className="col order__detail--desc">
-                      <p>Spider-Man: Homecoming</p>
-                      <p>02:00pm</p>
-                      <p>$10</p>
-                      <p>C4, C5, C6</p>
+                      <p>{this.state.dataDetailMovie[0].name}</p>
+                      <p>{this.state.timeSchedule}</p>
+                      <p>{this.state.price}</p>
+                      <p>{(this.state.selectedSeat || []).map((item) => `${item}, `)}</p>
                     </div>
                   </div>
                   <div className="row order__payment">
@@ -131,7 +140,7 @@ class Order extends Component {
                       <p>Total Payment</p>
                     </div>
                     <div className="col order__payment--price">
-                      <p>$30</p>
+                      <p>{this.state.price * this.state.selectedSeat.length}</p>
                     </div>
                   </div>
                 </div>
