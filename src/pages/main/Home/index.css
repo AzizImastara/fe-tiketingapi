@@ -49,7 +49,8 @@
 
 .movie {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-direction: column;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -152,6 +153,7 @@
 .movie__upcoming {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 90%;
   padding: 60px 0;

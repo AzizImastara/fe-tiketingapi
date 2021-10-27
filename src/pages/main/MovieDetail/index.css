@@ -80,24 +80,21 @@
   padding: 32px;
 }
 
-.dropdown button {
+.dropdown input {
   width: 100%;
-  padding: 12px 40px;
+  padding: 2px 20px;
   font-size: 16px;
   font-weight: 400;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-radius: 8px;
 }
 
-.dropdown button i {
-  margin-right: 16px;
-  margin-left: -16px;
-}
-
-.dropdown button img {
-  margin-right: 16px;
-  margin-left: -16px;
+.dropdown select {
+  width: 100%;
+  padding: 4.1px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 8px;
+  background: #fff;
 }
 
 .schedule__movie {

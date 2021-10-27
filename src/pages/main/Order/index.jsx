@@ -1,7 +1,70 @@
 import React, { Component } from "react";
 import "./index.css";
+import Seat from "../../../components/Seat";
 
 class Order extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listSeat: ["A", "B", "C"],
+      selectedSeat: [],
+      reservedSeat: ["A1", "C7"],
+      movieId: props.location.state ? props.location.state.movieId : "",
+      scheduleId: props.location.state ? props.location.state.scheduleId : "",
+      timeSchedule: props.location.state ? props.location.state.timeSchedule : "",
+      dateSchedule: props.location.state ? props.location.state.dateSchedule : ""
+    };
+  }
+  componentDidMount() {
+    console.log(this.state);
+    this.checkingData();
+  }
+
+  checkingData = () => {
+    const { movieId, scheduleId, timeSchedule, dateSchedule } = this.state;
+    if (!movieId || !scheduleId || !timeSchedule || !dateSchedule) {
+      alert("Select Movie !");
+      this.props.history.push("/Home");
+    }
+  };
+  selectedSeat = (data) => {
+    // console.log("user select seat");
+    // console.log(data);
+    if (this.state.selectedSeat.includes(data)) {
+      const deleteSeat = this.state.selectedSeat.filter((el) => {
+        return el !== data;
+      });
+      this.setState({
+        selectedSeat: deleteSeat
+      });
+    } else {
+      this.setState({
+        selectedSeat: [...this.state.selectedSeat, data]
+      });
+    }
+  };
+
+  handleBooking = () => {
+    if (this.state.selectedSeat.length < 1) {
+      alert("Please Select Seat !");
+    } else {
+      const { movieId, scheduleId, dateSchedule, timeSchedule, selectedSeat } = this.state;
+      const setData = {
+        movieId,
+        scheduleId,
+        dateSchedule,
+        timeSchedule,
+        seat: selectedSeat
+      };
+      this.props.history.push("/Payment", setData);
+    }
+  };
+
+  handleResetBooking = () => {
+    this.setState({
+      selectedSeat: []
+    });
+  };
   render() {
     return (
       <>
@@ -17,10 +80,26 @@ class Order extends Component {
                 <div className="movie__seat">
                   <h4>Choose Your Seat</h4>
                 </div>
-                <div className="seat"></div>
+                <div className="seat">
+                  {" "}
+                  {this.state.listSeat.map((item, index) => (
+                    <div key={index}>
+                      <Seat
+                        seatAlphabhet={item}
+                        selectedSeat={this.selectedSeat}
+                        reserved={this.state.reservedSeat}
+                        selected={this.state.selectedSeat}
+                      />
+                    </div>
+                  ))}
+                </div>
                 <div className="seat__button">
-                  <button className="btn btn-light">Change your movie</button>
-                  <button className="btn btn-primary">Checkout now</button>
+                  <button className="btn btn-light" onClick={this.handleResetBooking}>
+                    Reset Seat
+                  </button>
+                  <button className="btn btn-primary" onClick={this.handleBooking}>
+                    Checkout now
+                  </button>
                 </div>
               </div>
               <div className="col-lg-5 col-sm-6 order">

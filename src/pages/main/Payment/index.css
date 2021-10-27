@@ -3,6 +3,18 @@
   padding: 2rem 0;
 }
 
+.payment__info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.personal__info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
 .payment__page {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -89,6 +101,7 @@
 
 .payment__button button {
   width: 40%;
+  height: 100%;
   padding: 12px;
 }
 .payment__button button:nth-child(1) {
@@ -135,4 +148,29 @@
 
 .personal__error i {
   margin-right: 12px;
+}
+
+.payment__button--mobile {
+  display: none;
+}
+
+.payment__button--mobile button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 991.98px) {
+  .payment__page {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .payment__button {
+    display: none;
+  }
+  .payment__button--mobile {
+    display: flex;
+  }
 }

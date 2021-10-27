@@ -100,6 +100,9 @@ class Payment extends Component {
                   <p>Fill your data correctly.</p>
                 </div>
               </div>
+              <div className="payment__button--mobile">
+                <button className="btn btn-primary">Pay your order</button>
+              </div>
             </div>
           </div>
         </div>

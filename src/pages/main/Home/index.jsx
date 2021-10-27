@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import Navs from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Card from "../../../components/Card";
+import Card2 from "../../../components/Card2";
 import "./index.css";
 import hero from "../../../assets/img/Group 14.png";
 import axios from "../../../utils/axios";
+import Pagination from "react-paginate";
 
 class Home extends Component {
   constructor() {
@@ -12,7 +14,7 @@ class Home extends Component {
     this.state = {
       data: [],
       page: 1,
-      limit: 3,
+      limit: 4,
       pageInfo: {}
     };
   }
@@ -36,11 +38,25 @@ class Home extends Component {
       });
   };
 
+  handlePagination = (event) => {
+    // console.log(event.selected + 1);
+    const selectedPage = event.selected + 1;
+    this.setState(
+      {
+        page: selectedPage
+      },
+      () => {
+        this.getDataMovie();
+      }
+    );
+  };
+
   handleDetail = (data) => {
-    this.props.history.push(`/basic-detail/${data}`);
+    this.props.history.push(`/MovieDetail/${data}`);
   };
 
   render() {
+    const { data, pageInfo } = this.state;
     return (
       <>
         <Navs />
@@ -70,11 +86,21 @@ class Home extends Component {
               <div className="row">
                 {this.state.data &&
                   this.state.data.map((item) => (
-                    <div className="col-md-4" key={item.id}>
+                    <div className="col-md-3" key={item.id}>
                       <Card data={item} handleDetail={this.handleDetail} />
                     </div>
                   ))}
               </div>
+              <Pagination
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={pageInfo.totalPage}
+                onPageChange={this.handlePagination}
+                containerClassName={"pagination"}
+                disabledClassName={"pagination_disabled"}
+                activeClassName={"pagination__active"}
+              />
             </div>
           </div>
         </div>
@@ -147,11 +173,21 @@ class Home extends Component {
             <div className="row">
               {this.state.data &&
                 this.state.data.map((item) => (
-                  <div className="col-md-4" key={item.id}>
-                    <Card data={item} handleDetail={this.handleDetail} />
+                  <div className="col-md-3" key={item.id}>
+                    <Card2 data={item} handleDetail={this.handleDetail} />
                   </div>
                 ))}
             </div>
+            <Pagination
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              breakLabel={"..."}
+              pageCount={pageInfo.totalPage}
+              onPageChange={this.handlePagination}
+              containerClassName={"pagination"}
+              disabledClassName={"pagination_disabled"}
+              activeClassName={"pagination__active"}
+            />
           </div>
         </div>
 
