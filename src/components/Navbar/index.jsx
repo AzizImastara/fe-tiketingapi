@@ -37,8 +37,8 @@ const Navs = () => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Payment</Nav.Link>
+            <Nav.Link href="/Home">Home</Nav.Link>
+            <Nav.Link href="/Payment">Payment</Nav.Link>
             <Nav.Link href="#action2">Profile</Nav.Link>
             <Nav className="d-flex justify-content-end w-100 order-md-1">
               <NavDropdown title="Location">
@@ -56,11 +56,10 @@ const Navs = () => {
                   <img
                     className="profile__picture"
                     src={
-                      userData.img
+                      userData.image
                         ? `http://localhost:3001/uploads/user/${userData.image}`
                         : blankProfile
                     }
-                    alt=""
                   />
                 ) : (
                   <Button onClick={handleRouteSwitch} variant="primary">

@@ -1,6 +1,9 @@
 .icon {
   margin: 0 24px;
 }
+.navbar {
+  margin: 20px 0;
+}
 a.nav-link {
   color: #414141;
   /* padding: 0; */
@@ -17,10 +20,6 @@ a.nav-link {
   height: 50px;
   border-radius: 50%;
 }
-
-/* a.dropdown-toogle.nav-link::after {
-  margin: 0;
-} */
 
 @media (max-width: 991.98px) {
   a.nav-link {

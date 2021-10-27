@@ -1,0 +1,23 @@
+.btn__design {
+  display: none;
+  flex-direction: column;
+}
+.btn__design button {
+  width: 100%;
+  color: #5f2eea;
+}
+.btn__design button:nth-child(2) {
+  color: #fff;
+}
+button.btn.btn-light {
+  border: 1px solid #5f2eea;
+  margin-bottom: 1rem;
+}
+.card-body {
+  text-align: center;
+}
+.card-body:hover .btn__design {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

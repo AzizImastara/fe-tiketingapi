@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
 import "./index.css";
 
-class CardMovie extends Component {
+class CardMovie2 extends Component {
   handleSetUpdate = () => {
     this.props.handleUpdate(1);
   };
@@ -22,12 +22,9 @@ class CardMovie extends Component {
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>{category}</Card.Text>
-            <div className="btn__design">
+            <div className="btn__designer">
               <Button variant="light" onClick={() => this.props.handleDetail(id)}>
                 Details
-              </Button>
-              <Button variant="primary" onClick={() => this.props.handleDetail(id)}>
-                Book now
               </Button>
             </div>
             {/* 1 */}
@@ -47,4 +44,4 @@ class CardMovie extends Component {
   }
 }
 
-export default CardMovie;
+export default CardMovie2;
