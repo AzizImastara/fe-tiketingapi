@@ -1,3 +1,5 @@
 export const increaseCounter = () => {
-  console.log("increase");
+  return {
+    type: "increase"
+  };
 };
