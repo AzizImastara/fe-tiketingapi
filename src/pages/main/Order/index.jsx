@@ -30,7 +30,7 @@ class Order extends Component {
     const { movieId, scheduleId, timeSchedule, dateSchedule } = this.state;
     if (!movieId || !scheduleId || !timeSchedule || !dateSchedule) {
       alert("Select Movie !");
-      this.props.history.push("/Home");
+      this.props.history.push("/Payment");
     }
   };
   selectedSeat = (data) => {
@@ -62,7 +62,13 @@ class Order extends Component {
         timeSchedule,
         seat: selectedSeat
       };
-      this.props.history.push("/Payment", setData);
+      this.props.history.push("/Payment", {
+        setData,
+        movieName: this.state.dataDetailMovie,
+        cinemaName: this.state.premiere,
+        tiket: this.state.selectedSeat.length,
+        price: this.state.price * this.state.selectedSeat.length
+      });
     }
   };
 

@@ -68,7 +68,7 @@ class MovieDetail extends Component {
   };
 
   handleTimeSchedule = (data, price, premiere) => {
-    console.log(data);
+    // console.log(data);
     alert("You Click Time " + data);
     this.setState({
       timeSchedule: data,
@@ -87,7 +87,7 @@ class MovieDetail extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
       });
     // console.log(this.state.movieId);
   };
@@ -96,13 +96,13 @@ class MovieDetail extends Component {
     axios
       .get("schedule")
       .then((res) => {
-        console.log(res, "res");
+        // console.log(res, "res");
         this.setState({
           dataSchedule: res.data.data
         });
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
       });
   };
 

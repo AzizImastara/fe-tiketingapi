@@ -13,19 +13,27 @@ class Home extends Component {
     super();
     this.state = {
       data: [],
+      dataUpcoming: [],
       page: 1,
       limit: 4,
-      pageInfo: {}
+      pageInfo: {},
+      pageInfoUpcoming: {},
+      filter: "",
+      pageUpcoming: 1,
+      limitUpcoming: 4
     };
   }
 
   componentDidMount() {
     this.getDataMovie();
+    this.getDataUpcoming();
   }
 
   getDataMovie = () => {
+    const dateNow = new Date().toISOString().split("-")[1];
+    // console.log(dateNow);
     axios
-      .get(`movie?page=${this.state.page}&limit=${this.state.limit}`)
+      .get(`movie?page=${this.state.page}&limit=${this.state.limit}&filter=${dateNow}`)
       .then((res) => {
         // console.log(res.data.data);
         this.setState({
@@ -38,8 +46,24 @@ class Home extends Component {
       });
   };
 
+  getDataUpcoming = () => {
+    axios
+      .get(
+        `movie?page=${this.state.pageUpcoming}&limit=${this.state.limitUpcoming}&filter=${this.state.filter}`
+      )
+      .then((res) => {
+        // console.log(res.data.data);
+        this.setState({
+          dataUpcoming: res.data.data,
+          pageInfoUpcoming: res.data.pagination
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
   handlePagination = (event) => {
-    // console.log(event.selected + 1);
     const selectedPage = event.selected + 1;
     this.setState(
       {
@@ -51,12 +75,24 @@ class Home extends Component {
     );
   };
 
+  handlePaginationUpcoming = (event) => {
+    const selectedPage = event.selected + 1;
+    this.setState(
+      {
+        pageUpcoming: selectedPage
+      },
+      () => {
+        this.getDataUpcoming();
+      }
+    );
+  };
+
   handleDetail = (data) => {
     this.props.history.push(`/MovieDetail/${data}`);
   };
 
   render() {
-    const { data, pageInfo } = this.state;
+    const { data, pageInfo, pageInfoUpcoming } = this.state;
     return (
       <>
         <Navs />
@@ -120,47 +156,155 @@ class Home extends Component {
           <div className="upcoming__month text-center">
             <ul>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "9"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   September
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "10"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   October
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "11"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   November
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "12"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   December
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "1"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   January
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "2"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   February
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "3"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   March
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "4"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   April
                 </a>
               </li>
               <li className="upcoming__month--list">
-                <a href="#" className="upcoming__month--link">
+                <a
+                  onClick={() => {
+                    this.setState(
+                      {
+                        filter: "5"
+                      },
+                      () => {
+                        this.getDataUpcoming();
+                      }
+                    );
+                  }}
+                  className="upcoming__month--link"
+                >
                   May
                 </a>
               </li>
@@ -171,8 +315,8 @@ class Home extends Component {
         <div className="container">
           <div className="movie__upcoming">
             <div className="row">
-              {this.state.data &&
-                this.state.data.map((item) => (
+              {this.state.dataUpcoming &&
+                this.state.dataUpcoming.map((item) => (
                   <div className="col-md-3" key={item.id}>
                     <Card2 data={item} handleDetail={this.handleDetail} />
                   </div>
@@ -182,8 +326,8 @@ class Home extends Component {
               previousLabel={"Previous"}
               nextLabel={"Next"}
               breakLabel={"..."}
-              pageCount={pageInfo.totalPage}
-              onPageChange={this.handlePagination}
+              pageCount={pageInfoUpcoming.totalPage}
+              onPageChange={this.handlePaginationUpcoming}
               containerClassName={"pagination"}
               disabledClassName={"pagination_disabled"}
               activeClassName={"pagination__active"}
