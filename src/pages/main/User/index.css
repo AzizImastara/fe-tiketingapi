@@ -1,0 +1,123 @@
+.user__bg {
+  background-color: #d6d8e7;
+}
+
+.user__layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user__profile {
+  background-color: #fff !important;
+  padding: 32px 32px !important;
+  margin: 40px 0 !important;
+  border-radius: 8px;
+}
+
+.user__header h4 {
+  font-size: 16px;
+  color: #4e4b66;
+  font-weight: 400;
+}
+
+.user__header--image {
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.user__header--image h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user__header--image p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.user__loyalty {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.loyalty {
+  background-color: #5f2eea;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.loyalty h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.user__loyalty h6 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4e4b66;
+  margin: 12px 0;
+}
+
+.point {
+  display: flex;
+}
+
+.point h5 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.point p {
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.user__account button {
+  width: 100%;
+  margin: 12px 0 20px 0;
+}
+
+.account__settings {
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 32px;
+}
+
+.account__settings h2 {
+  font-size: 18px;
+  color: #14142b;
+}
+
+.line {
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 32px;
+}
+
+.user__account {
+  background-color: #fff !important;
+  padding: 32px 32px !important;
+  margin: 40px 0 !important;
+  border-radius: 8px;
+}
+
+.user__account h2 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #14142b;
+}
+
+.user__content--desc span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4e4b66;
+}
+
+.user__content--input input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 8px 0;
+}

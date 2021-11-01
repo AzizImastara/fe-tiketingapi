@@ -1,0 +1,151 @@
+.schedule {
+  padding: 50px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.schedule__bg {
+  background-color: #d6d8e7;
+}
+
+.schedule__border {
+  border: 1px solid #dedede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.schedule__border img {
+  width: 75%;
+  margin: 20px;
+}
+
+.schedule__content--desc {
+  padding: 12px 0;
+}
+
+.schedule__content--desc span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4e4b66;
+}
+
+.schedule__content--input input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.schedule__premiere {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule__content--time button {
+  width: 100%;
+  margin: 8px 0;
+  border: none;
+  background-color: #fff;
+}
+
+.schedule__content--time-- button {
+  border: 1px solid #5f2eea;
+  border-radius: 8px;
+  width: 100%;
+  /* color: #5f2eea; */
+  margin: 8px 0;
+}
+
+.schedule__content--button {
+  display: flex;
+}
+
+.schedule__content--button button {
+  width: 100%;
+}
+
+.schedule__content--button button:nth-child(1) {
+  margin: 16px 12px 0 0;
+}
+
+.schedule__content--button button:nth-child(2) {
+  margin: 16px 0 0 0;
+}
+
+.schedule__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data--dropdown {
+  display: flex;
+}
+
+.data--dropdown select {
+  margin: 0 12px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.schedule__layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule__booking {
+  margin: 12px;
+  padding: 12px;
+  border: 1px solid #dedede;
+  border-radius: 8px;
+}
+
+.schedule__content--date button {
+  width: 100%;
+  margin: 8px 0;
+  border: none;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.schedule__content--adress h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.schedule__content--adress span {
+  font-size: 12px;
+  font-weight: 300;
+  color: #6e7191;
+}
+
+.schedule__content--cinema {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.schedule__header {
+  padding: 20px 0;
+}
+
+.schedule__header h1 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+}
+
+.schedule__data {
+  padding: 20px 0;
+}
+
+.data--schedule h1 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+}
