@@ -5,6 +5,7 @@ import logo from "../../../assets/img/tickitz 1.png";
 import gIcon from "../../../assets/img/googleIcon.svg";
 import fIcon from "../../../assets/img/facebookIcon.svg";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 class Login extends Component {
   constructor() {
@@ -33,12 +34,17 @@ class Login extends Component {
     axios
       .post("auth/login", this.state.form)
       .then((res) => {
-        // console.log(res.data.data.token);
         localStorage.setItem("token", res.data.data.token);
-        this.props.history.push("/Home");
+        localStorage.setItem("id", res.data.data.id);
+        this.handleUserData;
+        const decoded = jwt_decode(res.data.data.token);
+        if (decoded.roles === "admin") {
+          this.props.history.push("/ManageMovie");
+        } else {
+          this.props.history.push("/Home");
+        }
       })
       .catch((err) => {
-        // console.log(err.response);
         this.setState({
           isError: true,
           msg: err.response.data.msg
@@ -52,9 +58,24 @@ class Login extends Component {
       });
   };
 
+  // handleUserData = (event) => {
+  //   event.preventDefault();
+  //   axios
+  //     .get(`user/user/${localStorage.getItem("id")}`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       localStorage.setItem("idUser", JSON.stringify(res.data.data));
+  //     })
+  //     .catch((err) => {
+  //       this.setState({
+  //         isError: true,
+  //         msg: err.response.data.msg
+  //       });
+  //     });
+  // };
+
   handleReset = (event) => {
     event.preventDefault();
-    // console.log("Submit Reset");
   };
 
   render() {

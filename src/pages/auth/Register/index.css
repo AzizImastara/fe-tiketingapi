@@ -1,0 +1,139 @@
+.register__cover {
+  background-image: url("../../../assets/img/coverlogin.png");
+  height: 1024px;
+  background-size: cover;
+}
+
+.register__cover--screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(43, 21, 107, 0.7);
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.register__cover--desc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register__cover--desc h3 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.register__cover--desc p {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.steper {
+  padding: 20px;
+  counter-reset: step;
+}
+
+.steper__list::before {
+  counter-increment: step 1;
+  content: counter(step);
+
+  margin-right: 10px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.steper__list {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.steper__list--line {
+  border-left: 1px solid #fff;
+  height: 25px;
+  position: relative;
+  left: 14px;
+}
+
+.steper__list--active::before {
+  border: 2px solid #fff;
+  background-color: #fff;
+  color: blue;
+}
+
+.steper__list--active {
+  color: #fff;
+}
+
+.form__register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__register--detail {
+  padding: 60px;
+}
+
+.form__register h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #121212;
+}
+
+.form__register--input p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4e4b66;
+}
+
+.form__register--input input {
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+  border: 1px solid #b3b3b8;
+}
+
+.form__register--button button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 12px;
+  color: #f7f7fc;
+  background-color: #5f2eea;
+  outline: none;
+  border: none;
+}
+
+.sign--register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign--register a {
+  text-decoration: underline;
+  color: #5f2eea;
+  margin: 12px 0 0 4px;
+}
+
+.sign--register p {
+  color: #8692a6;
+  margin-top: 12px;
+  margin: 12px 0 0 0;
+}
