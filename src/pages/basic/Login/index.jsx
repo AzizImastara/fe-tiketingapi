@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "../../../utils/axios";
 import { Toast } from "react-bootstrap";
+import { connect } from "react-redux";
+import { login } from "../../../stores/actions/auth";
 
 class Login extends Component {
   constructor() {
@@ -26,27 +28,31 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("Submit Login");
-    axios
-      .post("auth/login", this.state.form)
-      .then((res) => {
-        // console.log(res.data.data.token);
-        localStorage.setItem("token", res.data.data.token);
-        this.props.history.push("/basic-react");
-      })
-      .catch((err) => {
-        // console.log(err.response);
-        this.setState({
-          isError: true,
-          msg: err.response.data.msg
-        });
-        setTimeout(() => {
-          this.setState({
-            isError: false,
-            msg: ""
-          });
-        }, 2000);
-      });
+    this.props.login(this.state.form).then((res) => {
+      // console.log(this.props.auth)
+      localStorage.setItem("token", res.value.data.data.token);
+      this.props.history.push("/basic-home");
+    });
+    // axios
+    //   .post("auth/login", this.state.form)
+    //   .then((res) => {
+    //     // console.log(res.data.data.token);
+    //     localStorage.setItem("token", res.data.data.token);
+    //     this.props.history.push("/basic-react");
+    //   })
+    //   .catch((err) => {
+    //     // console.log(err.response);
+    //     this.setState({
+    //       isError: true,
+    //       msg: err.response.data.msg
+    //     });
+    //     setTimeout(() => {
+    //       this.setState({
+    //         isError: false,
+    //         msg: ""
+    //       });
+    //     }, 2000);
+    //   });
   };
 
   handleReset = (event) => {
@@ -100,4 +106,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = {
+  login
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

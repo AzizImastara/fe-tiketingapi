@@ -31,15 +31,15 @@ class Counter extends Component {
 
   componentDidMount() {
     // console.log("DidMonth is running");
-    console.log(this.props.counter);
+    // console.log(this.props.counter);
   }
 
   componentDidUpdate() {
-    console.log("didUpdate is run");
+    // console.log("didUpdate is run");
   }
 
   componentWillUnmount() {
-    console.log("willunmonth");
+    // console.log("willunmonth");
   }
 
   render() {
