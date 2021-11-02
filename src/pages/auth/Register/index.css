@@ -1,29 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+
+* {
+  font-family: "Mulish", sans-serif;
+}
+
 .register__cover {
   background-image: url("../../../assets/img/coverlogin.png");
   height: 1024px;
   background-size: cover;
+  padding: 0 !important;
 }
 
 .register__cover--screen {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(43, 21, 107, 0.7);
   flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 20%;
+}
+
+.register__cover--logo img {
+  margin-top: -150px;
+  width: 250px;
+  height: 100px;
 }
 
 .register__cover--desc {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
 
 .register__cover--desc h3 {
   color: #fff;
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 700;
 }
 
@@ -36,6 +50,10 @@
 .steper {
   padding: 20px;
   counter-reset: step;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .steper__list::before {
@@ -44,9 +62,9 @@
 
   margin-right: 10px;
   border: 1px solid #fff;
-  border-radius: 20px;
-  width: 30px;
-  height: 30px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,13 +74,14 @@
   display: flex;
   align-items: center;
   color: #fff;
+  font-size: 24px;
 }
 
 .steper__list--line {
   border-left: 1px solid #fff;
   height: 25px;
   position: relative;
-  left: 14px;
+  left: 7.5%;
 }
 
 .steper__list--active::before {
@@ -136,4 +155,10 @@
   color: #8692a6;
   margin-top: 12px;
   margin: 12px 0 0 0;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 400;
+  color: #696f79;
 }
