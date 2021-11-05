@@ -10,7 +10,7 @@ class CardMovie2 extends Component {
     const { id, name, category, image } = this.props.data;
     return (
       <>
-        <Card style={{ width: "15rem" }}>
+        <Card style={{ width: "10rem" }}>
           <Card.Img
             variant="top"
             src={
@@ -27,16 +27,6 @@ class CardMovie2 extends Component {
                 Details
               </Button>
             </div>
-            {/* 1 */}
-            {/* <Button variant="secondary" onClick={() => this.props.handleUpdate(1)}>
-              Update
-            </Button> */}
-            {/* 2 */}
-            {/* <Button variant="secondary" onClick={this.handleSetUpdate}>
-                Update
-              </Button> */}
-            {/* <Button variant="danger">Delete</Button> */}
-            {/* <Button variant="primary">Go somewhere</Button> */}
           </Card.Body>
         </Card>
       </>

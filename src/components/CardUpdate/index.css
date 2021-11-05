@@ -1,0 +1,12 @@
+.btn__update button {
+  width: 100%;
+}
+
+.btn__update button:nth-child(1) {
+  color: #5f2eea;
+}
+
+.btn__update button:nth-child(2) {
+  color: #ed2e7e;
+  border: 1px solid #ed2e7e;
+}

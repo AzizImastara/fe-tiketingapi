@@ -10,7 +10,7 @@ class CardMovie extends Component {
     const { id, name, category, image } = this.props.data;
     return (
       <>
-        <Card style={{ width: "15rem" }}>
+        <Card style={{ width: "10rem" }}>
           <Card.Img
             variant="top"
             src={
