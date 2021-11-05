@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import "./index.css";
 import Navs from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import { Line } from "react-chartjs-2";
 
 const Dashboard = () => {
   let history = useHistory();
@@ -19,13 +20,21 @@ const Dashboard = () => {
             </div>
             <div className="col-3 dashboard__header">
               <h1>Filtered</h1>
-              <div className="dashboard__filter">
-                <button>Select Movie</button>
-                <button>Select Premiere</button>
-                <button>Select Location</button>
-                <div className="dashboard__filter--button">
-                  <button className="btn btn-primary">Filter</button>
-                  <button className="btn btn-light">Reset</button>
+              <div className="dashboard__filter--edit">
+                <div className="dashboard__filter">
+                  <select>
+                    <option>Select Movie</option>
+                  </select>
+                  <select>
+                    <option>Select Premiere</option>
+                  </select>
+                  <select>
+                    <option>Select Location</option>
+                  </select>
+                  <div className="dashboard__filter--button">
+                    <button className="btn btn-primary">Filter</button>
+                    <button className="btn btn-light">Reset</button>
+                  </div>
                 </div>
               </div>
             </div>

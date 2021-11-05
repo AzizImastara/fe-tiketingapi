@@ -11,15 +11,6 @@ import axios from "../../../utils/axios";
 const Register = () => {
   let history = useHistory();
 
-  // const [registerData, setRegisterData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   password: "",
-  //   isError: false,
-  //   msg: ""
-  // });
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,12 +29,17 @@ const Register = () => {
     axios
       .post("auth/register", registerData)
       .then((res) => {
-        console.log(res);
+        alert("Success Register Data, Check Your Email !");
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  // const handleRouteSwitch = (e) => {
+  //   e.preventDefault();
+  //   history.push("/Login");
+  // };
 
   return (
     <>

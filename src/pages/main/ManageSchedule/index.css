@@ -37,6 +37,13 @@
   border-radius: 8px;
 }
 
+.schedule__content--input select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
 .schedule__premiere {
   display: flex;
   justify-content: space-between;
@@ -50,11 +57,14 @@
   background-color: #fff;
 }
 
+.schedule__content--time-- {
+  display: flex;
+}
+
 .schedule__content--time-- button {
   border: 1px solid #5f2eea;
   border-radius: 8px;
   width: 100%;
-  /* color: #5f2eea; */
   margin: 8px 0;
 }
 

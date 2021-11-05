@@ -7,9 +7,61 @@ import gambar from "../../../assets/img/Spiderman.png";
 import ebuid from "../../../assets/img/ebuid-mini.png";
 import cineone from "../../../assets/img/cineone-mini.png";
 import hiflix from "../../../assets/img/hiflix-mini.png";
+import TimePicker from "react-time-picker";
 
 const ManageSchedule = () => {
   let history = useHistory();
+
+  const [timeValue, setTimeValue] = useState("10:00");
+  const [timePicker, setTimePicker] = useState(false);
+  const [timeArray, setTimeArray] = useState([]);
+
+  const handleShowTimePicker = () => {
+    if (!timePicker) {
+      setTimePicker(true);
+    } else {
+      setTimePicker(false);
+    }
+  };
+
+  const handleSubmitTime = () => {
+    function tConv24(time24) {
+      var ts = time24;
+      var H = +ts.substr(0, 2);
+      var h = H % 12 || 12;
+      h = h < 10 ? "0" + h : h; // leading 0 at the left for 1 digit hours
+      var ampm = H < 12 ? " AM" : " PM";
+      ts = h + ts.substr(2, 3) + ampm;
+      return ts;
+    }
+    setTimeArray([...timeArray, tConv24(timeValue)]);
+    setTimePicker(false);
+  };
+  console.log(timeArray);
+  // const [form, setForm] = useState({
+  //   movieId: "",
+  //   premiere: "",
+  //   time: "",
+  // })
+
+  // handleAddTime = (e) => {
+  //   if (e.key === "Enter") {
+  //     setForm({
+  //       ...form,
+  //       time: [...form.time, e.target.value]
+  //     }),
+  //     setShowInputTime(false)
+  //   }
+  // };
+
+  // handlePostSchedule = () => {
+  //   const setData = {
+  //     ...this.state.form,
+  //     time: this.state.form.time.join(",")
+  //   };
+  //   console.log(this.state.form);
+  //   console.log(setData);
+  // };
 
   return (
     <>
@@ -31,7 +83,10 @@ const ManageSchedule = () => {
                   <span>Movie</span>
                 </div>
                 <div className="schedule__content--input">
-                  <input type="text" placeholder="Select Movie" />
+                  {/* <input type="text" placeholder="Select Movie" /> */}
+                  <select>
+                    <option>Select Movie</option>
+                  </select>
                 </div>
                 <div className="schedule__content--desc">
                   <span>Price</span>
@@ -57,7 +112,10 @@ const ManageSchedule = () => {
                   <span>Location</span>
                 </div>
                 <div className="schedule__content--input">
-                  <input type="text" placeholder="Select Location" />
+                  {/* <input type="text" placeholder="Select Location" /> */}
+                  <select>
+                    <option>Select Location</option>
+                  </select>
                 </div>
                 <div className="row">
                   <div className="col-6">
@@ -82,9 +140,22 @@ const ManageSchedule = () => {
                     <span>Time</span>
                   </div>
                   <div className="col-3 schedule__content--time--">
-                    <button>+</button>
+                    <button onClick={handleShowTimePicker}>+</button>
+                    {timePicker && (
+                      <div className="schedule__content--timepicker">
+                        <TimePicker
+                          onChange={setTimeValue}
+                          value={timeValue}
+                          amPmAriaLabel="Select AM/PM"
+                        />
+                        <button onClick={handleSubmitTime}>Ok</button>
+                      </div>
+                    )}
+                    {timeArray?.map((e, i) => {
+                      return <p key={i}>{e}</p>;
+                    })}
                   </div>
-                  <div className="col-3 schedule__content--time">
+                  {/* <div className="col-3 schedule__content--time">
                     <button>08:30 am</button>
                   </div>
                   <div className="col-3 schedule__content--time">
@@ -104,7 +175,7 @@ const ManageSchedule = () => {
                   </div>
                   <div className="col-3 schedule__content--time">
                     <button>12:00 pm</button>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="schedule__content--button">
                   <button className="btn btn-light text-primary">Reset</button>
@@ -227,12 +298,7 @@ const ManageSchedule = () => {
             </div>
           </div>
         </div>
-        <div className="pagination">
-          <button className="btn btn-primary">1</button>
-          <button className="btn btn-primary">2</button>
-          <button className="btn btn-primary">3</button>
-          <button className="btn btn-primary">4</button>
-        </div>
+        <div className="empty"></div>
       </div>
       <Footer />
     </>

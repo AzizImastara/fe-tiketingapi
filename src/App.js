@@ -33,24 +33,31 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
+            {/* Basic */}
             <PublicRoute path="/basic-react" exact component={BasicReact} />
-            <PublicRoute path="/basic-login" restricted={true} exact component={BasicLogin} />
+            <PublicRoute path="/basic-login" exact component={BasicLogin} />
             <PrivateRoute path="/basic-home" exact component={BasicHome} />
             <Route path="/basic-detail/:movieId" exact component={BasicMovieDetail} />
             <Route path="/basic-order" exact component={BasicOrder} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/Register" exact component={Register} />
-            <Route path="/Home" exact component={Home} />
-            <Route path="/MovieDetail/:movieId" exact component={MovieDetail} />
-            <Route path="/Order" exact component={Order} />
-            <Route path="/Payment" exact component={Payment} />
-            <Route path="/Ticket" exact component={Ticket} />
-            <Route path="/User" exact component={User} />
             <PublicRoute path="/basic-counter-class" exact component={CounterClass} />
             <PublicRoute path="/basic-counter-func" exact component={CounterFunc} />
-            <Route path="/ManageMovie" exact component={ManageMovie} />
-            <Route path="/ManageSchedule" exact component={ManageSchedule} />
-            <Route path="/Dashboard" exact component={Dashboard} />
+
+            {/* Public */}
+            <PublicRoute path="/Login" restricted={true} exact component={Login} />
+            <PublicRoute path="/Register" exact component={Register} />
+
+            {/* User */}
+            <PrivateRoute path="/Home" exact component={Home} />
+            <PrivateRoute path="/MovieDetail/:movieId" exact component={MovieDetail} />
+            <PrivateRoute path="/Order" exact component={Order} />
+            <PrivateRoute path="/Payment" exact component={Payment} />
+            <PrivateRoute path="/Ticket" exact component={Ticket} />
+            <PrivateRoute path="/User" exact component={User} />
+
+            {/* Admin */}
+            <PrivateRoute path="/ManageMovie" exact component={ManageMovie} />
+            <PrivateRoute path="/ManageSchedule" exact component={ManageSchedule} />
+            <PrivateRoute path="/Dashboard" exact component={Dashboard} />
           </Switch>
         </Router>
       </Provider>

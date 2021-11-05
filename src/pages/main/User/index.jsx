@@ -8,10 +8,25 @@ import Account from "../../../components/AccountSettings";
 import OrderHistory from "../../../components/OrderHistory";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-// import { Tabs, Tab } from "react-bootstrap";
+import axios from "../../../utils/axios";
+import { useSelector } from "react-redux";
 
 const User = () => {
   let history = useHistory();
+
+  const [data, setData] = useState([]);
+  // const idUser = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    axios
+      .get(`user/user/${data.id}`)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }, []);
 
   return (
     <>
@@ -45,16 +60,12 @@ const User = () => {
               <div className="account__settings">
                 <div className="row">
                   <Tabs defaultActiveKey="Account" id="uncontrolled-tab-example" className="mb-3">
-                    {/* <div className="col-4"> */}
                     <Tab eventKey="Account" title="Account Settings">
                       <Account />
                     </Tab>
-                    {/* </div> */}
-                    {/* <div className="col-8"> */}
                     <Tab eventKey="Order" title="Order History">
                       <OrderHistory />
                     </Tab>
-                    {/* </div> */}
                   </Tabs>
                 </div>
               </div>

@@ -12,7 +12,13 @@ class BasicReact extends Component {
       name: "Bagus",
       data: [],
       search: "",
-      show: false
+      show: false,
+      form: {
+        movieId: "",
+        premiere: "",
+        time: []
+      },
+      showInputTime: false
     };
     this.handleClick3 = this.handleClick3.bind(this);
   }
@@ -45,27 +51,27 @@ class BasicReact extends Component {
     // console.log("COMPONENT WILLUNMOUNT IS RUNNING");
   }
   handleClick = (data) => {
-    console.log("Click !");
+    // console.log("Click !");
   };
   handleClick2 = (data) => {
     // console.log(this);
-    console.log("Click with Data = " + data);
+    // console.log("Click with Data = " + data);
   };
   handleClick3() {
-    console.log(this);
-    console.log("Click 3");
+    // console.log(this);
+    // console.log("Click 3");
   }
 
   changeText = (event) => {
-    console.log(event.target.value);
-    console.log(event);
+    // console.log(event.target.value);
+    // console.log(event);
     this.setState({
       search: event.target.value
     });
   };
   handleSearch = (event) => {
     if (event.key === "Enter") {
-      console.log("User Press Enter !");
+      // console.log("User Press Enter !");
       this.setState({
         search: event.target.value
       });
@@ -86,7 +92,39 @@ class BasicReact extends Component {
   };
 
   handleUpdateMovie = (data) => {
-    console.log("MOVIE IS UPDATE", data);
+    // console.log("MOVIE IS UPDATE", data);
+  };
+
+  showInputTime = () => {
+    this.setState({
+      showInputTime: true
+    });
+  };
+
+  handleAddTime = (event) => {
+    if (event.key === "Enter") {
+      this.setState({
+        form: {
+          ...this.state.form,
+          time: [...this.state.form.time, event.target.value]
+        },
+        showInputTime: false
+      });
+      // setForm({
+      //   ...form,
+      //   time: [...form.time, event.target.value]
+      // })
+      // setShowInputTime(false)
+    }
+  };
+
+  handlePostSchedule = () => {
+    const setData = {
+      ...this.state.form,
+      time: this.state.form.time.join(",")
+    };
+    console.log(this.state.form);
+    console.log(setData);
   };
 
   render() {
@@ -161,6 +199,20 @@ class BasicReact extends Component {
         </Modal>
 
         <hr />
+
+        <div className="container">
+          <h1>Time Input</h1>
+          {this.state.showInputTime ? (
+            <input type="text" onKeyPress={this.handleAddTime} />
+          ) : (
+            <button onClick={this.showInputTime}>+</button>
+          )}
+          {this.state.form.time.map((item, index) => (
+            <div key={index}>{item}</div>
+          ))}
+          <hr />
+          <button onClick={this.handlePostSchedule}>Submit</button>
+        </div>
         {/* COMPONENT COMUNICATION */}
         {/* <CardMovie handleUpdate={this.handleUpdateMovie} /> */}
       </>

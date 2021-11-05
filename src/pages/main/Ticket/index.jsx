@@ -17,7 +17,7 @@ const Ticket = () => {
             <h2 className="text-center">Proff of Payment</h2>
           </div>
           <div className="row">
-            <div className="col-2">BG1</div>
+            <div className="col-2"></div>
             <div className="col-5">
               <div className="ticket__header--title">
                 <img src={logo} />
@@ -95,7 +95,7 @@ const Ticket = () => {
                 </div>
               </div>
             </div>
-            <div className="col-2">BG2</div>
+            <div className="col-2"></div>
           </div>
           <div className="ticket__button">
             <button>Download</button>
