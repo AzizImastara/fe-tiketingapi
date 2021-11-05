@@ -4,10 +4,118 @@ import "./index.css";
 import Navs from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Pagination from "react-paginate";
-import gambar from "../../../assets/img/Spiderman.png";
+import CardUpdate from "../../../components/CardUpdate";
+import axios from "../../../utils/axios";
 
 const ManageMovie = () => {
   let history = useHistory();
+
+  const [data, setData] = useState([]);
+  const [detail, setDetail] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(8);
+  const [pageInfo, setPageInfo] = useState({});
+  const [imagesPreview, setImagePreview] = useState(null);
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
+  const onFileChange = (e) => {
+    setDetail((oldValue) => {
+      return { ...oldValue, image: e.target.files[0] };
+    });
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const [isUpdate, setIsUpdate] = useState(false);
+
+  const postMovie = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("name", detail.name);
+    data.append("category", detail.category);
+    data.append("releaseDate", detail.releaseDate);
+    data.append("cast", detail.cast);
+    data.append("director", detail.director);
+    data.append("duration", detail.duration);
+    data.append("synopsis", detail.synopsis);
+    data.append("image", detail.image);
+    await axios
+      .post("movie?type=movie", data)
+      .then((res) => {
+        alert("Post Movie Success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleUpdate = (detailMovie) => {
+    setDetail({ ...detailMovie, releaseDate: detailMovie.releaseDate.slice(0, 10) });
+    window.scrollTo(0, 0);
+    setIsUpdate(true);
+  };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`movie/${id}`)
+      .then((res) => {
+        alert("Delete Movie Success");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const updateMovie = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("name", detail.name);
+    data.append("category", detail.category);
+    data.append("releaseDate", detail.releaseDate);
+    data.append("cast", detail.cast);
+    data.append("director", detail.director);
+    data.append("duration", detail.duration);
+    data.append("synopsis", detail.synopsis);
+    data.append("image", detail.image);
+    // console.log(detail);
+    await axios
+      .patch(`movie/${detail.id}?type=movie`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then((res) => {
+        // console.log(res);
+        setIsUpdate(false);
+        alert("Update Movie Success");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    console.log(sort);
+    axios
+      .get(`movie?page=${page}&limit=${limit}&search=${search}&sort=${sort}`)
+      .then((res) => {
+        setData(res.data.data);
+        setPageInfo(res.data.pagination);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }, [page, limit, search, sort]);
+
+  const onChangeInput = (e) => {
+    setDetail((oldValue) => {
+      return { ...oldValue, [e.target.name]: e.target.value };
+    });
+  };
+
+  // handleReset = (event) => {
+  //   event.preventDefault();
+  //   console.log("Submit Reset");
+  // };
 
   return (
     <>
@@ -17,31 +125,54 @@ const ManageMovie = () => {
           <div className="profile__header">
             <h1>Form Movie</h1>
           </div>
-          <div className="profile">
+          <form
+            onSubmit={isUpdate ? updateMovie : postMovie}
+            className="profile"
+            encType="multipart/form-data"
+          >
             <div className="row">
               <div className="col-2">
                 <div className="profile__border">
-                  <img src={gambar} />
+                  <img
+                    src={
+                      imagesPreview
+                        ? imagesPreview
+                        : detail.image
+                        ? `http://localhost:3001/uploads/movie/${detail.image}`
+                        : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
+                    }
+                  />
                 </div>
+                <input type="file" name="image" onChange={(e) => onFileChange(e)} />
               </div>
               <div className="col-5">
                 <div className="profile__content--desc">
                   <span>Movie Name</span>
                 </div>
                 <div className="profile__content--input">
-                  <input type="text" placeholder="Spiderman Homecoming" />
+                  <input type="text" value={detail.name} name="name" onChange={onChangeInput} />
                 </div>
                 <div className="profile__content--desc">
                   <span>Director</span>
                 </div>
                 <div className="profile__content--input">
-                  <input type="text" placeholder="Jon watch" />
+                  <input
+                    type="text"
+                    value={detail.director}
+                    name="director"
+                    onChange={onChangeInput}
+                  />
                 </div>
                 <div className="profile__content--desc">
                   <span>Release date</span>
                 </div>
                 <div className="profile__content--input">
-                  <input type="text" placeholder="07/05/2020" />
+                  <input
+                    type="date"
+                    value={detail.releaseDate}
+                    name="releaseDate"
+                    onChange={onChangeInput}
+                  />
                 </div>
               </div>
               <div className="col-5">
@@ -49,29 +180,31 @@ const ManageMovie = () => {
                   <span>Category</span>
                 </div>
                 <div className="profile__content--input">
-                  <input type="text" placeholder="Action, Adventure, Sci-Fi" />
+                  <input
+                    type="text"
+                    value={detail.category}
+                    name="category"
+                    onChange={onChangeInput}
+                  />
                 </div>
                 <div className="profile__content--desc">
-                  <span>Director</span>
+                  <span>Cast</span>
                 </div>
                 <div className="profile__content--input">
-                  <input type="text" placeholder="Jon watch" />
+                  <input type="text" value={detail.cast} name="cast" onChange={onChangeInput} />
                 </div>
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-12">
                     <div className="profile__content--desc">
-                      <span>Duration Hour</span>
+                      <span>Duration</span>
                     </div>
                     <div className="profile__content--input">
-                      <input type="text" placeholder="2" />
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="profile__content--desc">
-                      <span>Duration Minute</span>
-                    </div>
-                    <div className="profile__content--input">
-                      <input type="text" placeholder="13" />
+                      <input
+                        type="text"
+                        value={detail.duration}
+                        name="duration"
+                        onChange={onChangeInput}
+                      />
                     </div>
                   </div>
                 </div>
@@ -83,53 +216,61 @@ const ManageMovie = () => {
                 name="synopsis"
                 cols="100"
                 rows="1"
-                placeholder="Thrilled by his experience with the Avengers, Peter returns home, where he lives with his Aunt May, | "
+                value={detail.synopsis}
+                onChange={onChangeInput}
               ></textarea>
             </div>
             <div className="profile__content--button">
               <button className="btn btn-light text-primary">Reset</button>
-              <button className="btn btn-primary">Submit</button>
+              <button className="btn btn-primary" type="submit">
+                {isUpdate ? "Update" : "Submit"}
+              </button>
             </div>
-          </div>
-          <div className="profile__header">
-            <h1>Data Movie</h1>
+          </form>
+          <div className="movie__data">
+            <div className="data--movie">
+              <h1>Data Schedule</h1>
+            </div>
+            <div className="data--dropdown--movie">
+              <select onChange={(e) => setSort(e.target.value)}>
+                <option>Sort</option>
+                <option value="ASC">ASC</option>
+                <option value="DESC">DESC</option>
+              </select>
+              <input
+                type="text"
+                placeholder="Search Movie Name..."
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
           </div>
           <div className="profile">
             <div className="row profile__movie">
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-            </div>
-            <div className="row profile__movie">
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
-              <div className="col-3 profile__movie detail">
-                <img src={gambar} />
-              </div>
+              {data &&
+                data.map((item) => (
+                  <div className="col-md-3" key={item.id}>
+                    <CardUpdate
+                      name={item.name}
+                      category={item.category}
+                      image={item.image}
+                      handleUpdate={() => handleUpdate(item)}
+                      handleDelete={() => handleDelete(item.id)}
+                    />
+                  </div>
+                ))}
+              <Pagination
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={pageInfo.totalPage}
+                onPageChange={(e) => setPage(e.selected + 1)}
+                containerClassName={"pagination"}
+                disabledClassName={"pagination_disabled"}
+                activeClassName={"pagination__active"}
+              />
             </div>
           </div>
-          <div className="pagination">
-            <button className="btn btn-primary">1</button>
-            <button className="btn btn-primary">2</button>
-            <button className="btn btn-primary">3</button>
-            <button className="btn btn-primary">4</button>
-          </div>
+          <div className="empty"></div>
         </div>
       </div>
 

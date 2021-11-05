@@ -2,6 +2,7 @@
   padding: 50px;
   border-radius: 8px;
   background-color: #fff;
+  /* margin-bottom: 50px; */
 }
 
 .profile__bg {
@@ -14,6 +15,15 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+}
+
+.profile__header {
+  padding: 32px 0;
+}
+
+.profile__header h1 {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .profile__border img {
@@ -80,13 +90,41 @@
   margin: 0 0 50px 0;
 }
 
-.pagination {
+.movie__data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.data--dropdown--movie {
+  display: flex;
+}
+
+.data--movie h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.data--dropdown--movie select {
+  margin: 0 12px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.data--dropdown--movie input {
+  margin: 0 12px;
+  width: 300px;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.empty {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-}
-
-.pagination button {
-  width: 3%;
-  margin: 12px 12px 24px 12px;
+  margin: 50px !important;
 }
