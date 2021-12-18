@@ -6,6 +6,9 @@ import gIcon from "../../../assets/img/googleIcon.svg";
 import fIcon from "../../../assets/img/facebookIcon.svg";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { connect } from "react-redux";
+import { login } from "../../../stores/actions/auth";
+import { toast, ToastContainer } from "react-toastify";
 
 class Login extends Component {
   constructor() {
@@ -29,51 +32,30 @@ class Login extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    // console.log(this.state);
-    axios
-      .post("auth/login", this.state.form)
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props
+      .login(this.state.form)
       .then((res) => {
-        localStorage.setItem("token", res.data.data.token);
-        localStorage.setItem("id", res.data.data.id);
-        this.handleUserData;
-        const decoded = jwt_decode(res.data.data.token);
+        localStorage.setItem("token", res.value.data.data.token);
+        localStorage.setItem("id", res.value.data.data.id);
+        this.props.history.push("/home");
+        toast.success("Success Login !");
+        console.log(res.value.data.msg, "resss");
+        // alert("success login");
+        const decoded = jwt_decode(res.value.data.data.token);
         if (decoded.roles === "admin") {
           this.props.history.push("/ManageMovie");
         } else {
           this.props.history.push("/Home");
         }
       })
-      .catch((err) => {
-        this.setState({
-          isError: true,
-          msg: err.response.data.msg
-        });
-        setTimeout(() => {
-          this.setState({
-            isError: false,
-            msg: ""
-          });
-        }, 2000);
+      .catch((error) => {
+        console.log(error, "err");
+        // console.log(err.response);
+        // toast.warn(err.response.data.msg);
       });
   };
-
-  // handleUserData = (event) => {
-  //   event.preventDefault();
-  //   axios
-  //     .get(`user/user/${localStorage.getItem("id")}`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       localStorage.setItem("idUser", JSON.stringify(res.data.data));
-  //     })
-  //     .catch((err) => {
-  //       this.setState({
-  //         isError: true,
-  //         msg: err.response.data.msg
-  //       });
-  //     });
-  // };
 
   handleReset = (event) => {
     event.preventDefault();
@@ -143,4 +125,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = {
+  login
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
