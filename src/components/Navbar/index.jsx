@@ -6,18 +6,27 @@ import "./index.css";
 import { Navbar, Container, NavDropdown, Nav, Form, Button } from "react-bootstrap";
 import jwt_decode from "jwt-decode";
 import blankProfile from "../../assets/img/blank-profile.png";
+import { useDispatch, useSelector } from "react-redux";
+import { profile } from "../../stores/actions/profile";
 
 const Navs = () => {
   let history = useHistory();
 
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     const decoded = jwt_decode(token);
+  //     setUserData(decoded);
+  //   }
+  // }, []);
+
+  const user = useSelector((state) => state.auth);
+  const profileUser = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decoded = jwt_decode(token);
-      setUserData(decoded);
-    }
+    dispatch(profile(user.idUser));
   }, []);
 
   const logOut = () => {
@@ -38,12 +47,26 @@ const Navs = () => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <div className="nav--link">
-              <Link to="/Home">Home</Link>
-            </div>
-            <div className="nav--link">
-              <Link to="/User">Profile</Link>
-            </div>
+            {profileUser.data.roles === "admin" ? (
+              <div className="nav--link">
+                <Link to="/ManageMovie">ManageMovie</Link>
+              </div>
+            ) : (
+              <div className="nav--link">
+                <Link to="/Home">Home</Link>
+              </div>
+            )}
+
+            {profileUser.data.roles === "admin" ? (
+              <div className="nav--link">
+                <Link to="/ManageSchedule">ManageSchedule</Link>
+              </div>
+            ) : (
+              <div className="nav--link">
+                <Link to="/User">Profile</Link>
+              </div>
+            )}
+
             <Nav className="d-flex justify-content-end w-100 align-items-center">
               <div className="nav--logout">
                 <Link to="/Login" onClick={logOut}>
@@ -54,12 +77,20 @@ const Navs = () => {
                 {/* <Nav.Link href="#" className="icon">
                   <img src={icon} alt="" />
                 </Nav.Link> */}
-                {userData ? (
+                {/* <img
+                  className="profile__picture"
+                  src={
+                    profileUser.data.image
+                      ? `${process.env.REACT_APP_URL_LOCAL}uploads/user/${profileUser.data.image}`
+                      : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
+                  }
+                /> */}
+                {profileUser.data.image ? (
                   <img
                     className="profile__picture"
                     src={
-                      userData.image
-                        ? `http://localhost:3001/uploads/user/${userData.image}`
+                      profileUser.data.image
+                        ? `${process.env.REACT_APP_URL_LOCAL}uploads/user/${profileUser.data.image}`
                         : blankProfile
                     }
                   />

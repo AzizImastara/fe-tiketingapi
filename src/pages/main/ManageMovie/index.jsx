@@ -8,8 +8,6 @@ import CardUpdate from "../../../components/CardUpdate";
 import axios from "../../../utils/axios";
 
 const ManageMovie = () => {
-  let history = useHistory();
-
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
   const [page, setPage] = useState(1);
@@ -138,7 +136,7 @@ const ManageMovie = () => {
                       imagesPreview
                         ? imagesPreview
                         : detail.image
-                        ? `http://localhost:3001/uploads/movie/${detail.image}`
+                        ? `${process.env.REACT_APP_URL_LOCAL}uploads/movie/${detail.image}`
                         : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
                     }
                   />

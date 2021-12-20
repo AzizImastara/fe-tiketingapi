@@ -52,7 +52,7 @@ const User = (props) => {
                 <img
                   src={
                     profileUser.data.image
-                      ? `http://localhost:3001/uploads/user/${profileUser.data.image}`
+                      ? `${process.env.REACT_APP_URL_LOCAL}uploads/user/${profileUser.data.image}`
                       : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
                   }
                 />

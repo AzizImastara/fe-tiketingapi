@@ -15,7 +15,7 @@ class CardMovie2 extends Component {
             variant="top"
             src={
               image
-                ? `http://localhost:3001/uploads/movie/${image}`
+                ? `${process.env.REACT_APP_URL_LOCAL}uploads/movie/${image}`
                 : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
             }
           />

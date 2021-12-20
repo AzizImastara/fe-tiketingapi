@@ -128,7 +128,7 @@ class MovieDetail extends Component {
                   <img
                     src={
                       this.state.dataDetailMovie[0].image
-                        ? `http://localhost:3001/uploads/movie/${this.state.dataDetailMovie[0].image}`
+                        ? `${process.env.REACT_APP_URL_LOCAL}uploads/movie/${this.state.dataDetailMovie[0].image}`
                         : blank
                     }
                   />
