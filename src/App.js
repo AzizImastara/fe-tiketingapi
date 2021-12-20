@@ -25,41 +25,57 @@ import CounterClass from "./pages/basic/Counter/counter.class";
 import CounterFunc from "./pages/basic/Counter/counter.functional";
 
 import { Provider } from "react-redux";
-import store from "./stores/store";
+import { store, persistor } from "./stores/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <Switch>
-            {/* Basic */}
-            <PublicRoute path="/basic-react" exact component={BasicReact} />
-            <PublicRoute path="/basic-login" exact component={BasicLogin} />
-            <PrivateRoute path="/basic-home" exact component={BasicHome} />
-            <Route path="/basic-detail/:movieId" exact component={BasicMovieDetail} />
-            <Route path="/basic-order" exact component={BasicOrder} />
-            <PublicRoute path="/basic-counter-class" exact component={CounterClass} />
-            <PublicRoute path="/basic-counter-func" exact component={CounterFunc} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <Switch>
+              {/* Basic */}
+              <PublicRoute path="/basic-react" exact component={BasicReact} />
+              <PublicRoute path="/basic-login" exact component={BasicLogin} />
+              <PrivateRoute path="/basic-home" exact component={BasicHome} />
+              <Route path="/basic-detail/:movieId" exact component={BasicMovieDetail} />
+              <Route path="/basic-order" exact component={BasicOrder} />
+              <PublicRoute path="/basic-counter-class" exact component={CounterClass} />
+              <PublicRoute path="/basic-counter-func" exact component={CounterFunc} />
 
-            {/* Public */}
-            <PublicRoute path="/Login" restricted={true} exact component={Login} />
-            <PublicRoute path="/Register" exact component={Register} />
+              {/* Public */}
+              <PublicRoute path="/Login" restricted={true} exact component={Login} />
+              <PublicRoute path="/Register" exact component={Register} />
 
-            {/* User */}
-            <PrivateRoute path="/Home" exact component={Home} />
-            <PrivateRoute path="/MovieDetail/:movieId" exact component={MovieDetail} />
-            <PrivateRoute path="/Order" exact component={Order} />
-            <PrivateRoute path="/Payment" exact component={Payment} />
-            <PrivateRoute path="/Ticket" exact component={Ticket} />
-            <PrivateRoute path="/User" exact component={User} />
+              {/* User */}
+              <PrivateRoute path="/Home" exact component={Home} />
+              <PrivateRoute path="/MovieDetail/:movieId" exact component={MovieDetail} />
+              <PrivateRoute path="/Order" exact component={Order} />
+              <PrivateRoute path="/Payment" exact component={Payment} />
+              <PrivateRoute path="/Ticket" exact component={Ticket} />
+              <PrivateRoute path="/User" exact component={User} />
 
-            {/* Admin */}
-            <PrivateRoute path="/ManageMovie" exact component={ManageMovie} />
-            <PrivateRoute path="/ManageSchedule" exact component={ManageSchedule} />
-            <PrivateRoute path="/Dashboard" exact component={Dashboard} />
-          </Switch>
-        </Router>
+              {/* Admin */}
+              <PrivateRoute path="/ManageMovie" exact component={ManageMovie} />
+              <PrivateRoute path="/ManageSchedule" exact component={ManageSchedule} />
+              <PrivateRoute path="/Dashboard" exact component={Dashboard} />
+            </Switch>
+          </Router>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            backgroundcolor="black"
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+          />
+        </PersistGate>
       </Provider>
     );
   }

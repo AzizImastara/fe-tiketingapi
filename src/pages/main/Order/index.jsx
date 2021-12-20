@@ -4,6 +4,8 @@ import Seat from "../../../components/Seat";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import cineone from "../../../assets/img/cineone-mini.png";
+import Navs from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 class Order extends Component {
   constructor(props) {
@@ -22,7 +24,7 @@ class Order extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.state);
+    // console.log(this.state);
     this.checkingData();
   }
 
@@ -82,6 +84,7 @@ class Order extends Component {
     // console.log(this.state.dataDetailMovie, "....");
     return (
       <>
+        <Navs />
         <div className="detail__bg">
           <div className="container">
             <div className="row detail">
@@ -121,7 +124,16 @@ class Order extends Component {
                 <h4>Order Info</h4>
                 <div className="order__background">
                   <div className="order__header">
-                    <img src={cineone} alt="cineone-mini" />
+                    <img
+                      src={
+                        this.state.premiere === "hiflix"
+                          ? { hiflix }
+                          : this.state.premiere === "ebu.id"
+                          ? { ebuid }
+                          : { cineone }
+                      }
+                      alt="mini"
+                    />{" "}
                     <h5>{this.state.premiere}</h5>
                   </div>
                   <div className="order__detail--title">
@@ -151,12 +163,15 @@ class Order extends Component {
                   </div>
                 </div>
                 <div className="seat__button--mobile">
-                  <button className="btn btn-primary">Checkout now</button>
+                  <button className="btn btn-primary" onClick={this.handleBooking}>
+                    Checkout now
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }

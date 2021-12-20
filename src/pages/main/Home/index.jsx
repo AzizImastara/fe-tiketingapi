@@ -119,10 +119,10 @@ class Home extends Component {
               </div>
             </div>
             <div className="movie">
-              <div className="row">
+              <div className="card__item">
                 {this.state.data &&
                   this.state.data.map((item) => (
-                    <div className="col-md-3" key={item.id}>
+                    <div className="card__item--detail" key={item.id}>
                       <Card data={item} handleDetail={this.handleDetail} />
                     </div>
                   ))}
@@ -314,10 +314,10 @@ class Home extends Component {
 
         <div className="container">
           <div className="movie__upcoming">
-            <div className="row">
+            <div className="card__item">
               {this.state.dataUpcoming &&
                 this.state.dataUpcoming.map((item) => (
-                  <div className="col-md-3" key={item.id}>
+                  <div className="card__item--detail" key={item.id}>
                     <Card2 data={item} handleDetail={this.handleDetail} />
                   </div>
                 ))}

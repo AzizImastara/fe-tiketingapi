@@ -4,14 +4,10 @@
 }
 .btn__design button {
   width: 100%;
-  color: #5f2eea;
-}
-.btn__design button:nth-child(2) {
+  margin-top: 12px;
   color: #fff;
-}
-button.btn.btn-light {
-  border: 1px solid #5f2eea;
-  margin-bottom: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
 }
 .card-body {
   text-align: center;
@@ -20,4 +16,29 @@ button.btn.btn-light {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.card__img--size {
+  border-radius: 12px !important;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card__img--size img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-body h2 {
+  font-size: 24px;
+  color: #14142b;
+  font-weight: 700;
+}
+
+.card-body h6 {
+  font-size: 16px;
+  color: #a0a3bd;
 }

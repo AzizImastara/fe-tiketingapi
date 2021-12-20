@@ -60,18 +60,6 @@ class Home extends Component {
     // }
   };
 
-  setUpdate = () => {
-    console.log("setUpdate");
-  };
-
-  handleUpdate = () => {
-    console.log("handleUpdate");
-  };
-
-  handleDelete = () => {
-    console.log("handleDelete");
-  };
-
   getDataMovie = () => {
     axios
       .get(`movie?page=${this.state.page}&limit=${this.state.limit}`)

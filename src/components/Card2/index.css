@@ -1,4 +1,8 @@
 .btn__designer button {
   width: 100%;
+  margin-top: 12px;
+  background-color: #fff;
+  border: 1px solid #5f2eea;
   color: #5f2eea;
+  border-radius: 8px;
 }

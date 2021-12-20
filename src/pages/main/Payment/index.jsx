@@ -79,7 +79,7 @@ class Payment extends Component {
   }
 
   payment = (paymentMethod) => {
-    console.log(paymentMethod);
+    // console.log(paymentMethod);
     this.setState(
       {
         paymentMethod
@@ -159,10 +159,8 @@ class Payment extends Component {
                 </div>
               </div>
               <div className="payment__button">
-                <button className="btn btn-light">Prvious step</button>
-                <button className="btn btn-primary" onClick={this.setDB}>
-                  Pay your order
-                </button>
+                {/* <button className="btn btn-light">Prvious step</button> */}
+                <button onClick={this.setDB}>Pay your order</button>
               </div>
             </div>
             <div className="personal__info">

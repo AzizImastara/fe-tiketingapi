@@ -12,6 +12,7 @@
   padding: 32px 32px !important;
   margin: 40px 0 !important;
   border-radius: 8px;
+  height: 100%;
 }
 
 .user__header h4 {
@@ -24,6 +25,14 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
+}
+
+.user__header--image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .user__header--image h2 {
@@ -74,4 +83,27 @@
   font-size: 10px;
   font-weight: 400;
   color: #fff;
+}
+
+.account__settings--button {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.account__settings--button h2 {
+  margin: 0;
+}
+
+.account__settings--button h2:nth-child(1) {
+  margin: 0 24px 0 0;
+}
+
+.user__update--image button {
+  width: 60%;
+  border-radius: 8px;
+  border: 1px solid #5f2eea;
+  margin: 0 0 12px 0;
+  background-color: #5f2eea;
+  color: #fff;
+  padding: 4px;
 }

@@ -51,9 +51,9 @@ class Login extends Component {
         }
       })
       .catch((error) => {
-        console.log(error, "err");
+        console.log(error.response, "err");
         // console.log(err.response);
-        // toast.warn(err.response.data.msg);
+        // toast.warn(error.response.data.msg);
       });
   };
 

@@ -7,6 +7,7 @@ import ebuid from "../../../assets/img/ebuid-mini.png";
 import cineone from "../../../assets/img/cineone-mini.png";
 import hiflix from "../../../assets/img/hiflix-mini.png";
 import blank from "../../../assets/img/blank-profile.png";
+import moment from "moment";
 
 const dateNow = new Date().toISOString().split("T")[0];
 class MovieDetail extends Component {
@@ -69,7 +70,7 @@ class MovieDetail extends Component {
 
   handleTimeSchedule = (data, price, premiere) => {
     // console.log(data);
-    alert("You Click Time " + data);
+    alert("You Click Time" + data);
     this.setState({
       timeSchedule: data,
       price: price,
@@ -94,7 +95,7 @@ class MovieDetail extends Component {
 
   getSchedule = () => {
     axios
-      .get("schedule")
+      .get(`schedule?page=1&dblimit=10&searchBy=movieId&search=${this.state.movieId}`)
       .then((res) => {
         // console.log(res, "res");
         this.setState({
@@ -112,15 +113,17 @@ class MovieDetail extends Component {
   }
 
   render() {
+    // console.log(this.state.movieId, "sadh");
+
     // console.log(this.state.dataDetailMovie);
-    // console.log(this.state.dataSchedule);
+    console.log(this.state.dataSchedule);
     return (
       <>
         <Navs />
         <div className="container">
           {this.state.dataDetailMovie.length > 0 && (
             <div className="row hero">
-              <div className="col-4 hero__left">
+              <div className="col-lg-4 hero__left">
                 <div className="hero__left--border">
                   <img
                     src={
@@ -131,13 +134,15 @@ class MovieDetail extends Component {
                   />
                 </div>
               </div>
-              <div className="col-8 hero__right">
+              <div className="col-lg-8 col-md-12 hero__right">
                 <h1>{this.state.dataDetailMovie[0].name}</h1>
                 <h2>{this.state.dataDetailMovie[0].category}</h2>
                 <div className="row hero__right--flex">
                   <div className=" col-6 hero__right--desc">
                     <p>Release date</p>
-                    <h4>{this.state.dataDetailMovie[0].releaseDate}</h4>
+                    <h4>
+                      {moment(this.state.dataDetailMovie[0].releaseDate).format("dddd MMM YYYY")}
+                    </h4>
                     <p>Duration</p>
                     <h4>{this.state.dataDetailMovie[0].duration}</h4>
                   </div>
@@ -181,7 +186,16 @@ class MovieDetail extends Component {
                   <div className="col schedule__movie">
                     <div className="row">
                       <div className="col-12 col-lg-6 schedule__movie--cinema">
-                        <img src={ebuid} alt="mini" />
+                        <img
+                          src={
+                            item.premiere === "hiflix"
+                              ? { hiflix }
+                              : item.premiere === "ebu.id"
+                              ? { ebuid }
+                              : { cineone }
+                          }
+                          alt="mini"
+                        />
                       </div>
                       <div className="col-12 col-lg-6 schedule__movie--adress">
                         <h4>{item.premiere}</h4>
@@ -198,15 +212,13 @@ class MovieDetail extends Component {
                           </p>
                         </div>
                       ))}
-
-                      <div className="col schedule__movie--time"></div>
                     </div>
                     <div className="row">
                       <div className="col schedule__movie--price">
                         <p>Price</p>
                       </div>
                       <div className="col schedule__movie--price">
-                        <h6>${item.price}/seat</h6>
+                        <h6>Rp.{item.price}/seat</h6>
                       </div>
                     </div>
                     <button className="btn btn-primary" onClick={() => this.handleBooking(1)}>

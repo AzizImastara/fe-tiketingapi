@@ -4,12 +4,8 @@
   font-family: "Mulish", sans-serif;
 }
 
-.hero__left {
-  margin-top: 40px;
-}
-
-.hero__right {
-  margin-top: 40px;
+.hero {
+  margin: 40px 0 !important;
 }
 
 .hero__left--border {
@@ -21,8 +17,12 @@
 }
 
 .hero__left--border img {
-  padding: 24px 0;
-  width: 70%;
+  /* padding: 24px 0; */
+  margin: 24px 0;
+  width: 15rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 8px !important;
 }
 
 .hero__right h4 {
@@ -35,6 +35,7 @@
   font-size: 32px;
   font-weight: 700;
   color: #14142b;
+  margin: 8px 0;
 }
 
 .hero__right h2 {
@@ -115,9 +116,17 @@
   color: #6e7191;
 }
 
+.schedule__movie--time {
+  display: flex;
+  justify-content: space-around;
+  /* background-color: blue; */
+}
+
 .schedule__movie--time p {
   font-size: 14px;
   font-weight: 400;
+  color: #14142b;
+  cursor: pointer;
 }
 
 .schedule__movie--price {
@@ -149,6 +158,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .hero__left--border img {
+    width: 20rem;
   }
 
   .hero__right h1 {

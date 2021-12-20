@@ -10,7 +10,7 @@ class CardMovie2 extends Component {
     const { id, name, category, image } = this.props.data;
     return (
       <>
-        <Card style={{ width: "10rem" }}>
+        <Card className="card__img--size">
           <Card.Img
             variant="top"
             src={
@@ -20,12 +20,10 @@ class CardMovie2 extends Component {
             }
           />
           <Card.Body>
-            <Card.Title>{name}</Card.Title>
-            <Card.Text>{category}</Card.Text>
+            <h2>{name}</h2>
+            <h6>{category}</h6>
             <div className="btn__designer">
-              <Button variant="light" onClick={() => this.props.handleDetail(id)}>
-                Details
-              </Button>
+              <Button onClick={() => this.props.handleDetail(id)}>Details</Button>
             </div>
           </Card.Body>
         </Card>

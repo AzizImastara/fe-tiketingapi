@@ -208,6 +208,19 @@
   font-size: 12px;
   color: #6e7191;
 }
+.card__item {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+}
+.card__item--detail {
+  display: flex;
+  margin-right: 50px;
+}
+.hero__bg {
+  background-color: #d6d8e7;
+  padding: 24px 0;
+}
 
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
@@ -236,11 +249,6 @@
 
   .hero--img img {
     width: 100%;
-  }
-
-  .hero__bg {
-    background-color: #d6d8e7;
-    padding: 24px 0;
   }
 
   .movie {
