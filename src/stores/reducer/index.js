@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
-import counter from "./counter";
 import auth from "./auth";
 import movie from "./movie";
+import profile from "./profile";
 
 export default combineReducers({
-  counter: counter,
   auth,
-  movie
+  movie,
+  profile
 });
