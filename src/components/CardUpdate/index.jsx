@@ -5,7 +5,7 @@ import "./index.css";
 const CardUpdate = ({ name, category, image, handleUpdate, handleDelete }) => {
   return (
     <>
-      <Card style={{ width: "10rem" }}>
+      <Card className="card__img--size">
         <Card.Img
           variant="top"
           src={

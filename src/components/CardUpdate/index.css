@@ -4,6 +4,8 @@
 
 .btn__update button:nth-child(1) {
   color: #5f2eea;
+  border: 1px solid #5f2eea;
+  margin-bottom: 12px;
 }
 
 .btn__update button:nth-child(2) {

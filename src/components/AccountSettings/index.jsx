@@ -40,11 +40,10 @@ const Account = () => {
     axios
       .patch(`user/updatePassword/${user.idUser}`, updatePassword)
       .then((res) => {
-        console.log(res);
         toast.success(res.data.msg);
       })
       .catch((err) => {
-        console.log(err.response);
+        toast.warn(err.response.data.msg);
       });
   };
 
@@ -57,7 +56,7 @@ const Account = () => {
         toast.success(res.data.msg);
       })
       .catch((error) => {
-        console.log(error.response);
+        toast.warn(error.response.data.msg);
       });
   };
 

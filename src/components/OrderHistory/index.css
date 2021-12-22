@@ -2,6 +2,7 @@
   border: 1px solid #dedede;
   padding: 20px;
   border-radius: 8px;
+  margin: 12px 0;
 }
 
 .history__name,
@@ -17,6 +18,10 @@
   color: #aaa;
 }
 
+.history__name--premiere img {
+  width: 100%;
+}
+
 .history__name--desc h2 {
   font-size: 24px;
   font-weight: 600;
@@ -26,7 +31,8 @@
 .history__button--ticket button {
   width: 100%;
   background-color: aqua;
-  padding: 8px 24px;
-  border-radius: 4px;
+  padding: 12px 24px;
+  border-radius: 8px;
   border: none;
+  margin: 12px 0 0 0;
 }

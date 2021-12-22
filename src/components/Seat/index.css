@@ -34,14 +34,14 @@
 
 @media (max-width: 575.98px) {
   .seat__row {
-    margin-bottom: 5px;
+    margin-bottom: 10px !important;
   }
   .seat__col--text {
     font-size: 10px;
   }
   .seat__list {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border-radius: 15%;
   }
   .seat__list:hover {
