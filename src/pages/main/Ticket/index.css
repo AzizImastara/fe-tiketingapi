@@ -5,12 +5,19 @@
   margin: 50px;
 }
 
+.ticket__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .ticket__header--title {
   background-color: #5f2eea;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding: 20px;
+  border-radius: 8px 0 0 0;
 }
 
 .ticket__header--title span {
@@ -19,11 +26,19 @@
   font-weight: 600;
 }
 
+.qr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 .ticket__desc span,
 .ticket__desc--schedule--item span {
   color: #aaaaaa;
   font-size: 12px;
   font-weight: 400;
+  padding: 12px;
 }
 
 .ticket__desc h6,
@@ -31,11 +46,13 @@
   color: #14142b;
   font-weight: 600;
   font-size: 16px;
+  padding: 12px;
 }
 
 .ticket__header--title--right {
   background-color: #5f2eea;
-  padding: 12px;
+  padding: 20px;
+  border-radius: 0 8px 0 0;
 }
 
 .ticket__button {
@@ -45,7 +62,50 @@
 }
 
 .ticket__button button {
-  width: 10%;
-  margin: 20px 12px;
+  width: 30%;
+  /* margin: 20px 12px; */
+  border: 1px solid #4e4b66;
   border-radius: 4px;
+  margin: 12px 8px;
+}
+
+.ticket__bg {
+  background-color: #5f2eea;
+  padding: 32px;
+  /* padding-top: 20px;
+  padding-bottom: 60px; */
+}
+
+.ticket__background {
+  background-color: #fff;
+  /* padding: 0 0 20px 0; */
+  border-radius: 8px;
+}
+
+.ticket__content {
+  padding: 0 50px 50px;
+}
+
+.ticket__content--1 {
+  padding: 0 !important;
+  border-radius: 0 0 0 12px !important;
+  border: 1px solid #dedede;
+}
+
+.ticket__content--2 {
+  padding: 0 !important;
+  border-radius: 0 0 12px 0;
+  border: 1px solid #dedede;
+}
+
+@media (max-width: 991.98px) {
+  .ticket__content--1 {
+    display: none;
+  }
+  .ticket__content--2 {
+    border-radius: 0 0 8px 8px;
+  }
+  .ticket__header--title--right {
+    border-radius: 8px 8px 0 0;
+  }
 }
