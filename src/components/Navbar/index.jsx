@@ -24,10 +24,10 @@ const Navs = () => {
 
   const user = useSelector((state) => state.auth);
   const profileUser = useSelector((state) => state.profile);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(profile(user.idUser));
-  }, []);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(profile(user.idUser));
+  // }, []);
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -77,15 +77,15 @@ const Navs = () => {
                 {/* <Nav.Link href="#" className="icon">
                   <img src={icon} alt="" />
                 </Nav.Link> */}
-                {/* <img
+                <img
                   className="profile__picture"
                   src={
                     profileUser.data.image
                       ? `${process.env.REACT_APP_URL_LOCAL}uploads/user/${profileUser.data.image}`
                       : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
                   }
-                /> */}
-                {profileUser.data.image ? (
+                />
+                {/* {profileUser.data.image ? (
                   <img
                     className="profile__picture"
                     src={
@@ -98,7 +98,7 @@ const Navs = () => {
                   <Button onClick={handleRouteSwitch} variant="primary">
                     Sign Up
                   </Button>
-                )}
+                )} */}
               </Form>
             </Nav>
           </Navbar.Collapse>

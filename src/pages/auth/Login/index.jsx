@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { login } from "../../../stores/actions/auth";
+import { profile } from "../../../stores/actions/profile";
 import { toast, ToastContainer } from "react-toastify";
 
 class Login extends Component {
@@ -39,21 +40,21 @@ class Login extends Component {
       .then((res) => {
         localStorage.setItem("token", res.value.data.data.token);
         localStorage.setItem("id", res.value.data.data.id);
-        this.props.history.push("/home");
+        // this.props.history.push("/home");
         toast.success("Success Login !");
-        console.log(res.value.data.msg, "resss");
-        // alert("success login");
-        const decoded = jwt_decode(res.value.data.data.token);
-        if (decoded.roles === "admin") {
-          this.props.history.push("/ManageMovie");
-        } else {
-          this.props.history.push("/Home");
-        }
+        this.props.profile(res.value.data.data.id).then((res) => {
+          const role = res.value.data.data[0].roles;
+          if (role === "admin") {
+            this.props.history.push("/ManageMovie");
+          } else {
+            this.props.history.push("/Home");
+          }
+        });
       })
-      .catch((error) => {
-        console.log(error.response, "err");
+      .catch((err) => {
+        console.log(err.response.data.msg, "err");
         // console.log(err.response);
-        // toast.warn(error.response.data.msg);
+        toast.warn(err.response.data.msg);
       });
   };
 
@@ -99,8 +100,8 @@ class Login extends Component {
                 </div>
               </form>
               <div className="sign--forgot">
-                <p>Forgot your password?</p>
-                <Link to="/basic-react">Reset now</Link>
+                <p>Dont have an account? Register</p>
+                <Link to="/Register">here</Link>
               </div>
               <div className="sign-or">
                 <span className="sign-or-line"></span>
@@ -126,11 +127,13 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
 const mapDispatchToProps = {
-  login
+  login,
+  profile
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

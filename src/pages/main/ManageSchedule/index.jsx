@@ -75,7 +75,7 @@ const ManageSchedule = () => {
 
   // console.log(idSchedule, "idd");
 
-  console.log(form, "seke");
+  // console.log(form, "seke");
 
   const handleSubmitTime = () => {
     // function tConv24(time24) {
@@ -97,7 +97,7 @@ const ManageSchedule = () => {
     axios
       .get(`schedule?page=${page}&dblimit=${limit}&sort=${sort}`)
       .then((res) => {
-        console.log(res, "shcee");
+        // console.log(res, "shcee");
         setDataSchedule(res.data.data);
         setPageInfo(res.data.pagination);
       })
@@ -122,7 +122,7 @@ const ManageSchedule = () => {
     axios
       .post("schedule", form)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         getDataSchedule();
         toast.success("Success Post Schedule");
         setForm(res.data.data);
@@ -141,7 +141,7 @@ const ManageSchedule = () => {
     axios
       .patch(`schedule/${idSchedule}`, form)
       .then((res) => {
-        console.log(res, "resss update");
+        // console.log(res, "resss update");
         toast.success("Success Update Schedule");
         setIdSchedule("");
         getDataSchedule();

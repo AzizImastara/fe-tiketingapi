@@ -7,10 +7,9 @@ import gIcon from "../../../assets/img/googleIcon.svg";
 import fIcon from "../../../assets/img/facebookIcon.svg";
 import { Form, Button } from "react-bootstrap";
 import axios from "../../../utils/axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
-  let history = useHistory();
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,15 +23,15 @@ const Register = () => {
       email: email,
       password: password
     };
-    // console.log(register);
-    // console.log(firstName, lastName, email, password);
+
     axios
       .post("auth/register", registerData)
       .then((res) => {
-        alert("Success Register Data, Check Your Email !");
+        toast.success("Success register user, please check your email !");
       })
       .catch((err) => {
-        console.log(err);
+        toast.warn(err.response.data.msg);
+        console.log(err.response);
       });
   };
 
@@ -129,47 +128,6 @@ const Register = () => {
               </button>
             </div>
           </Form>
-          {/* <div className="form__register--detail">
-            <h2>Fill your additional details</h2>
-            <form className="form__register--input">
-              <p>Email</p>
-              <input
-                type="email"
-                placeholder="Write your email"
-                name="email"
-                // onChange={this.handleChangeForm}
-              />
-              <p>Password</p>
-              <input
-                type="password"
-                placeholder="Write your password"
-                name="password"
-                // onChange={this.handleChangeForm}
-              />
-              <div className="form__register--button">
-                <button>Join for free now</button>
-              </div>
-            </form>
-            <div className="sign--register">
-              <p>Do you already have an account? </p>
-              <Link to="/Login">Log in</Link>
-            </div>
-            <div className="sign-or">
-              <span className="sign-or-line"></span>
-              <p>Or</p>
-              <span className="sign-or-line"></span>
-            </div>
-            <div className="icon__button">
-              <button className="icon__button--content">
-                <img src={gIcon} alt="googleIcon" />
-                <p>Google</p>
-              </button>
-              <button className="icon__button--content">
-                <img src={fIcon} alt="facebookIcon" />
-                <p>Facebook</p>
-              </button>
-            </div>
-          </div> */}
         </div>
       </div>
     </>

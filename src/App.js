@@ -20,6 +20,7 @@ import Dashboard from "./pages/main/Dashboard";
 
 import PrivateRoute from "./helpers/routes/privateRoute";
 import PublicRoute from "./helpers/routes/publicRoute";
+import AdminRoute from "./helpers/routes/adminRoute";
 
 import CounterClass from "./pages/basic/Counter/counter.class";
 import CounterFunc from "./pages/basic/Counter/counter.functional";
@@ -55,13 +56,13 @@ class App extends Component {
               <PrivateRoute path="/MovieDetail/:movieId" exact component={MovieDetail} />
               <PrivateRoute path="/Order" exact component={Order} />
               <PrivateRoute path="/Payment" exact component={Payment} />
-              <PrivateRoute path="/Ticket" exact component={Ticket} />
+              <PrivateRoute path="/Ticket/:id" exact component={Ticket} />
               <PrivateRoute path="/User" exact component={User} />
 
               {/* Admin */}
-              <PrivateRoute path="/ManageMovie" exact component={ManageMovie} />
-              <PrivateRoute path="/ManageSchedule" exact component={ManageSchedule} />
-              <PrivateRoute path="/Dashboard" exact component={Dashboard} />
+              <AdminRoute path="/ManageMovie" exact component={ManageMovie} />
+              <AdminRoute path="/ManageSchedule" exact component={ManageSchedule} />
+              <AdminRoute path="/Dashboard" exact component={Dashboard} />
             </Switch>
           </Router>
           <ToastContainer

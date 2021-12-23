@@ -30,13 +30,11 @@ const auth = (state = initialState, action) => {
         isLoading: false,
         isError: true,
         idUser: "",
-        msg: action.payload.data.msg
+        msg: action.payload.response.data.msg
       };
     }
     default: {
-      return {
-        ...state
-      };
+      return state;
     }
   }
 };

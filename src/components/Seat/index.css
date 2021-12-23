@@ -49,3 +49,24 @@
     height: 15px;
   }
 }
+
+@media (max-width: 375px) {
+  .seat__row {
+    margin-bottom: 5px !important;
+  }
+  .seat__col--text {
+    font-size: 5px;
+  }
+  .seat__list {
+    width: 10px;
+    height: 10px;
+    border-radius: 10%;
+  }
+  .seat__list:hover {
+    width: 10px;
+    height: 10px;
+  }
+  .seat__design {
+    padding: 12px !important;
+  }
+}
