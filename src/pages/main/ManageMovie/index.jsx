@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router";
 import "./index.css";
 import Navs from "../../../components/Navbar";
@@ -6,6 +6,7 @@ import Footer from "../../../components/Footer";
 import Pagination from "react-paginate";
 import CardUpdate from "../../../components/CardUpdate";
 import axios from "../../../utils/axios";
+import Swal from "sweetalert2";
 
 const ManageMovie = () => {
   const [data, setData] = useState([]);
@@ -52,17 +53,6 @@ const ManageMovie = () => {
     setIsUpdate(true);
   };
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`movie/${id}`)
-      .then((res) => {
-        alert("Delete Movie Success");
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
   const updateMovie = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -91,8 +81,7 @@ const ManageMovie = () => {
       });
   };
 
-  useEffect(() => {
-    console.log(sort);
+  const getMovie = () => {
     axios
       .get(`movie?page=${page}&limit=${limit}&search=${search}&sort=${sort}`)
       .then((res) => {
@@ -102,7 +91,33 @@ const ManageMovie = () => {
       .catch((err) => {
         console.log(err.response);
       });
+  };
+
+  useEffect(() => {
+    getMovie();
   }, [page, limit, search, sort]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    })
+      .then(async (res) => {
+        if (res.isConfirmed) {
+          await axios.delete(`movie/${id}`);
+          Swal.fire("Deleted!", "Success Delete Movie !", "success");
+          getMovie();
+        }
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
 
   const onChangeInput = (e) => {
     setDetail((oldValue) => {
@@ -110,9 +125,25 @@ const ManageMovie = () => {
     });
   };
 
-  // handleReset = (event) => {
-  //   event.preventDefault();
-  //   console.log("Submit Reset");
+  const inputFile = useRef(null);
+  const onButtonClick = () => {
+    inputFile.current.click();
+  };
+
+  // const resetForm = (e) => {
+  //   e.preventDefault();
+  //   setData({
+  //     movie_name: "",
+  //     director: "",
+  //     releaseDate: "",
+  //     category: "",
+  //     cast: "",
+  //     duration: "",
+  //     synopsis: "",
+  //     image: null
+  //   });
+  //   setIsUpdate(false);
+  //   setImagePreview("");
   // };
 
   return (
@@ -129,7 +160,8 @@ const ManageMovie = () => {
             encType="multipart/form-data"
           >
             <div className="row">
-              <div className="col-2">
+              <div className="col-lg-2 col-md-12 image__movie">
+                {/* <div className="image__movie"> */}
                 <div className="profile__border">
                   <img
                     src={
@@ -141,9 +173,19 @@ const ManageMovie = () => {
                     }
                   />
                 </div>
-                <input type="file" name="image" onChange={(e) => onFileChange(e)} />
+                <div className="update__image--movie">
+                  <button onClick={onButtonClick}>Choose Image</button>
+                </div>
+                <input
+                  type="file"
+                  name="image"
+                  ref={inputFile}
+                  onChange={(e) => onFileChange(e)}
+                  style={{ display: "none" }}
+                />
+                {/* </div> */}
               </div>
-              <div className="col-5">
+              <div className="col-lg-5 col-md-6 col-sm-6 col-6 manage__movie">
                 <div className="profile__content--desc">
                   <span>Movie Name</span>
                 </div>
@@ -173,7 +215,7 @@ const ManageMovie = () => {
                   />
                 </div>
               </div>
-              <div className="col-5">
+              <div className="col-lg-5 col-md-6 col-sm-6 col-6 manage__movie">
                 <div className="profile__content--desc">
                   <span>Category</span>
                 </div>
@@ -218,11 +260,14 @@ const ManageMovie = () => {
                 onChange={onChangeInput}
               ></textarea>
             </div>
-            <div className="profile__content--button">
-              <button className="btn btn-light text-primary">Reset</button>
-              <button className="btn btn-primary" type="submit">
-                {isUpdate ? "Update" : "Submit"}
-              </button>
+            <div className="row">
+              <div className="col-lg-6"></div>
+              <div className="col-lg-6 col-md-12">
+                <div className="profile__content--button">
+                  {/* <button type="button">Reset</button> */}
+                  <button type="submit">{isUpdate ? "Update" : "Submit"}</button>
+                </div>
+              </div>
             </div>
           </form>
           <div className="movie__data">
@@ -231,9 +276,9 @@ const ManageMovie = () => {
             </div>
             <div className="data--dropdown--movie">
               <select onChange={(e) => setSort(e.target.value)}>
-                <option>Sort</option>
-                <option value="ASC">ASC</option>
-                <option value="DESC">DESC</option>
+                <option hidden>Sort</option>
+                <option value="ASC">A - Z</option>
+                <option value="DESC">Z - A</option>
               </select>
               <input
                 type="text"
@@ -246,7 +291,7 @@ const ManageMovie = () => {
             <div className="row profile__movie">
               {data &&
                 data.map((item) => (
-                  <div className="col-md-3" key={item.id}>
+                  <div className="col-lg-3 col-md-6 col-sm-6" key={item.id}>
                     <CardUpdate
                       name={item.name}
                       category={item.category}
