@@ -23,7 +23,6 @@ const User = (props) => {
 
   const inputFile = useRef(null);
   const onButtonClick = () => {
-    // `current` points to the mounted file input element
     inputFile.current.click();
   };
 
@@ -33,12 +32,11 @@ const User = (props) => {
     axios
       .patch(`user/updateImage/${user.idUser}?type=user`, formData)
       .then((res) => {
-        console.log(res);
         toast.success(res.data.msg);
         dispatch(profile(user.idUser));
       })
       .catch((err) => {
-        console.log(err);
+        toast.warn(err.response.data.msg);
       });
   };
   return (

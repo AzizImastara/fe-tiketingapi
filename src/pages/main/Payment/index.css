@@ -15,6 +15,10 @@
   margin: 12px 0;
 }
 
+.payment__choose {
+  border: 2px solid #5f2eea !important;
+}
+
 .payment__info {
   width: 100%;
 }

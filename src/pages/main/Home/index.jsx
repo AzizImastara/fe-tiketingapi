@@ -114,9 +114,7 @@ class Home extends Component {
               <div className="showing__caption">
                 <h3>Now Showing</h3>
               </div>
-              <div className="showing__caption">
-                <p>view all</p>
-              </div>
+              <div className="showing__caption">{/* <p>view all</p> */}</div>
             </div>
             <div className="movie">
               <div className="card__item">
@@ -146,9 +144,7 @@ class Home extends Component {
             <div className="upcoming__caption">
               <h3>Upcoming Movies</h3>
             </div>
-            <div className="upcoming__caption">
-              <p>view all</p>
-            </div>
+            <div className="upcoming__caption">{/* <p>view all</p> */}</div>
           </div>
         </div>
 

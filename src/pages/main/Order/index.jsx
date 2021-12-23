@@ -4,6 +4,8 @@ import Seat from "../../../components/Seat";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import cineone from "../../../assets/img/cineone-mini.png";
+import hiflix from "../../../assets/img/hiflix-mini.png";
+import ebuid from "../../../assets/img/ebuid-mini.png";
 import Navs from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 
@@ -81,14 +83,14 @@ class Order extends Component {
   };
 
   render() {
-    // console.log(this.state.dataDetailMovie, "....");
+    console.log(this.state.scheduleId, "....");
     return (
       <>
         <Navs />
         <div className="detail__bg">
           <div className="container">
             <div className="row detail">
-              <div className="col-lg-7 col-sm-6 moviee">
+              <div className="col-lg-7 col-md-12 col-sm-12 moviee">
                 <h4 className="movie__none">Movie Selected</h4>
                 <div className="movie__selected">
                   <h5>{this.state.dataDetailMovie[0].name}</h5>
@@ -98,8 +100,7 @@ class Order extends Component {
                   <h4>Choose Your Seat</h4>
                 </div>
 
-                <div className="seat">
-                  {" "}
+                <div className="seat__design">
                   {this.state.listSeat.map((item, index) => (
                     <div key={index}>
                       <Seat
@@ -120,17 +121,17 @@ class Order extends Component {
                   </button>
                 </div>
               </div>
-              <div className="col-lg-5 col-sm-6 order">
+              <div className="col-lg-5 col-md-12 col-sm-12 order">
                 <h4>Order Info</h4>
                 <div className="order__background">
                   <div className="order__header">
                     <img
                       src={
                         this.state.premiere === "hiflix"
-                          ? { hiflix }
+                          ? hiflix
                           : this.state.premiere === "ebu.id"
-                          ? { ebuid }
-                          : { cineone }
+                          ? ebuid
+                          : cineone
                       }
                       alt="mini"
                     />{" "}
@@ -150,7 +151,7 @@ class Order extends Component {
                       <p>{this.state.dataDetailMovie[0].name}</p>
                       <p>{this.state.timeSchedule}</p>
                       <p>{this.state.price}</p>
-                      <p>{(this.state.selectedSeat || []).map((item) => `${item}, `)}</p>
+                      <p>{this.state.selectedSeat.join(", ")}</p>
                     </div>
                   </div>
                   <div className="row order__payment">

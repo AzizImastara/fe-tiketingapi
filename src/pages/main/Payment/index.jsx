@@ -13,12 +13,12 @@ import ovo from "../../../assets/img/OVO.png";
 import { BsExclamationTriangleFill } from "react-icons/bs";
 import moment from "moment";
 import axios from "../../../utils/axios";
+import { toast, ToastContainer } from "react-toastify";
 
 class Payment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listSeat: ["A", "B", "C"],
       selectedSeat: this.props.location.state ? this.props.location.state.setData.seat : [],
       reservedSeat: [],
       movieId: this.props.location.state ? this.props.location.state.setData.movieId : "",
@@ -28,7 +28,8 @@ class Payment extends Component {
       dataDetailMovie: this.props.location.state ? this.props.location.state.dataDetailMovie : [],
       price: this.props.location.state ? this.props.location.state.price : "",
       premiere: this.props.location.state ? this.props.location.state.cinemaName : "",
-      userData: {}
+      userData: {},
+      paymentChoose: ""
     };
   }
 
@@ -49,8 +50,9 @@ class Payment extends Component {
   };
 
   setDB = () => {
+    // alert("sjkadhsah");
     const booking = {
-      userId: this.state.userData.id,
+      userId: this.state.userData?.id,
       scheduleId: this.state.scheduleId,
       movieId: this.state.movieId,
       dateBooking: this.state.dateSchedule,
@@ -63,34 +65,35 @@ class Payment extends Component {
     axios
       .post("booking", booking)
       .then((res) => {
-        console.log(res);
+        console.log(res, "resssjhasjfhj");
+        toast.success("Success Booking Movie");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.msg);
       });
-    console.log(booking);
-    // axios.post("booking", {});
+    console.log(booking, "sb");
   };
 
   componentDidMount() {
-    // console.log(this.props.location);
+    // console.log(this.props.location.state, "sadgh");
+    // this.setDB();
     this.handleUserData();
-    this.setDB();
   }
 
   payment = (paymentMethod) => {
     // console.log(paymentMethod);
     this.setState(
       {
-        paymentMethod
+        paymentMethod,
+        paymentChoose: paymentMethod
       },
       () => console.log(this.state)
     );
   };
 
   render() {
-    // console.log(this.props);
-    // console.log(this.state.userData);
+    console.log(this.state.paymentChoose);
+    // console.log(this.state.userData.id, "user");
     return (
       <>
         <Navs />
@@ -123,29 +126,55 @@ class Payment extends Component {
               <h1>Choose a Payment Method</h1>
               <div className="payment__info--choose--container">
                 <div className="payment__info--choose">
-                  <button onClick={() => this.payment("gpay")}>
-                    <img src={gpay} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "gpay" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("gpay")}
+                  >
+                    <img src={gpay} />
                   </button>
-                  <button onClick={() => this.payment("visa")}>
-                    <img src={visa} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "visa" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("visa")}
+                  >
+                    <img src={visa} />
                   </button>
-                  <button onClick={() => this.payment("gopay")}>
-                    <img src={gopay} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "gopay" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("gopay")}
+                  >
+                    <img src={gopay} />
                   </button>
-                  <button onClick={() => this.payment("paypal")}>
-                    <img src={paypal} alt="gpay" />
+                  <button
+                    className={`${
+                      this.state.paymentChoose === "paypal" ? "payment__choose" : null
+                    }`}
+                    onClick={() => this.payment("paypal")}
+                  >
+                    <img src={paypal} />
                   </button>
-                  <button onClick={() => this.payment("dana")}>
-                    <img src={dana} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "dana" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("dana")}
+                  >
+                    <img src={dana} />
                   </button>
-                  <button onClick={() => this.payment("bca")}>
-                    <img src={bca} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "bca" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("bca")}
+                  >
+                    <img src={bca} />
                   </button>
-                  <button onClick={() => this.payment("bri")}>
-                    <img src={bri} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "bri" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("bri")}
+                  >
+                    <img src={bri} />
                   </button>
-                  <button onClick={() => this.payment("ovo")}>
-                    <img src={ovo} alt="gpay" />
+                  <button
+                    className={`${this.state.paymentChoose === "ovo" ? "payment__choose" : null}`}
+                    onClick={() => this.payment("ovo")}
+                  >
+                    <img src={ovo} />
                   </button>
                 </div>
                 <div className="sign-or">
@@ -159,8 +188,7 @@ class Payment extends Component {
                 </div>
               </div>
               <div className="payment__button">
-                {/* <button className="btn btn-light">Prvious step</button> */}
-                <button onClick={this.setDB}>Pay your order</button>
+                <button onClick={() => this.setDB()}>Pay your order</button>
               </div>
             </div>
             <div className="personal__info">
@@ -181,7 +209,9 @@ class Payment extends Component {
                 </div>
               </div>
               <div className="payment__button--mobile">
-                <button className="btn btn-primary">Pay your order</button>
+                <button onClick={() => this.setDB()} className="btn btn-primary">
+                  Pay your order
+                </button>
               </div>
             </div>
           </div>

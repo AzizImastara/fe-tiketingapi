@@ -8,6 +8,7 @@ import cineone from "../../../assets/img/cineone-mini.png";
 import hiflix from "../../../assets/img/hiflix-mini.png";
 import blank from "../../../assets/img/blank-profile.png";
 import moment from "moment";
+import Pagination from "react-paginate";
 
 const dateNow = new Date().toISOString().split("T")[0];
 class MovieDetail extends Component {
@@ -15,11 +16,14 @@ class MovieDetail extends Component {
     super(props);
     this.state = {
       movieId: props.match.params.movieId,
-      scheduleId: 1,
+      scheduleId: "",
       timeSchedule: "",
       dateSchedule: dateNow,
-      totalPayment: 20,
+      totalPayment: "",
+      limit: 2,
+      page: 1,
       price: 0,
+      pageInfo: {},
       premiere: "",
       // ==================
       dataSchedule: [],
@@ -69,7 +73,6 @@ class MovieDetail extends Component {
   };
 
   handleTimeSchedule = (data, price, premiere) => {
-    // console.log(data);
     alert("You Click Time" + data);
     this.setState({
       timeSchedule: data,
@@ -95,7 +98,9 @@ class MovieDetail extends Component {
 
   getSchedule = () => {
     axios
-      .get(`schedule?page=1&dblimit=10&searchBy=movieId&search=${this.state.movieId}`)
+      .get(
+        `schedule?page=${this.state.page}&dblimit=10&searchBy=movieId&search=${this.state.movieId}`
+      )
       .then((res) => {
         // console.log(res, "res");
         this.setState({
@@ -107,16 +112,29 @@ class MovieDetail extends Component {
       });
   };
 
+  // handlePagination = (event) => {
+  //   const selectedPage = event.selected + 1;
+  //   this.setState(
+  //     {
+  //       page: selectedPage
+  //     },
+  //     () => {
+  //       this.getSchedule();
+  //     }
+  //   );
+  // };
+
   componentDidMount() {
     this.getMovieDetail();
     this.getSchedule();
   }
 
   render() {
+    // const { dataSchedule, pageInfo } = this.state;
     // console.log(this.state.movieId, "sadh");
 
     // console.log(this.state.dataDetailMovie);
-    console.log(this.state.dataSchedule);
+    // console.log(this.state.dataSchedule);
     return (
       <>
         <Navs />
@@ -165,16 +183,14 @@ class MovieDetail extends Component {
         <div className="showtimes">
           <h2>Showtimes and Tickets</h2>
           <form className="row">
-            <div className="col-6 dropdown">
+            <div className="dropdown">
               <input type="date" value={this.state.dateSchedule} onChange={this.handleChangeDate} />
             </div>
-            <div className="col-6 dropdown">
+            {/* <div className="col-6 dropdown">
               <select>
-                <option>Purwokerto</option>
-                <option>Bogor</option>
-                <option>Jakarta</option>
+                <option>Location</option>
               </select>
-            </div>
+            </div> */}
           </form>
         </div>
 
@@ -189,10 +205,10 @@ class MovieDetail extends Component {
                         <img
                           src={
                             item.premiere === "hiflix"
-                              ? { hiflix }
-                              : item.premiere === "ebu.id"
-                              ? { ebuid }
-                              : { cineone }
+                              ? hiflix
+                              : item.premiere === "ebuid"
+                              ? ebuid
+                              : cineone
                           }
                           alt="mini"
                         />
@@ -221,12 +237,22 @@ class MovieDetail extends Component {
                         <h6>Rp.{item.price}/seat</h6>
                       </div>
                     </div>
-                    <button className="btn btn-primary" onClick={() => this.handleBooking(1)}>
+                    <button className="btn btn-primary" onClick={() => this.handleBooking(item.id)}>
                       Book now
                     </button>
                   </div>
                 </>
               ))}
+              {/* <Pagination
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                breakLabel={"..."}
+                pageCount={pageInfo.totalPage}
+                onPageChange={this.handlePagination}
+                containerClassName={"pagination"}
+                disabledClassName={"pagination_disabled"}
+                activeClassName={"pagination__active"}
+              /> */}
             </div>
           </div>
         </div>
