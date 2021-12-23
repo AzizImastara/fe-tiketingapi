@@ -4,8 +4,52 @@
   background-color: #fff;
 }
 
+.schedule__item {
+  background-color: #fff;
+  padding: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 12px;
+  margin: 0 !important;
+}
+
+.schedule__layout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border: 0.5px solid #dedede;
+  border-radius: 12px;
+  padding: 20px !important;
+  box-shadow: 0px 8px 16px rgba(186, 186, 186, 0.24);
+  /* width: 31% !important; */
+  margin: 20px;
+}
+
+.schedule__info {
+  background-color: #fff;
+  /* flex-direction: column; */
+}
+
 .schedule__bg {
   background-color: #d6d8e7;
+}
+
+.schedule__premiere--color {
+  /* background-color: #5f2eea; */
+  border: 1px solid #5f2eea;
+}
+
+.schedule__premiere--button {
+  border-radius: 8px;
+  /* padding: 20px; */
+}
+
+.schedule__premiere--button img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  padding: 12px;
 }
 
 .schedule__border {
@@ -46,15 +90,13 @@
 
 .schedule__premiere {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
-.schedule__content--time button {
-  width: 100%;
-  margin: 8px 0;
-  border: none;
-  background-color: #fff;
+.schedule__premiere img {
+  width: 100px;
+  object-fit: contain;
 }
 
 .schedule__content--time-- {
@@ -64,20 +106,80 @@
 .schedule__content--time-- button {
   border: 1px solid #5f2eea;
   border-radius: 8px;
-  width: 100%;
-  margin: 8px 0;
+  width: 100px;
+}
+
+button.time-picker__button {
+  margin-top: 8px;
+  padding: 6px;
+  margin-left: 12px;
+}
+
+button.time-picker__click {
+  width: 200px;
+  padding: 12px;
+}
+
+.schedule__content--time-- p {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  flex-direction: row;
+  margin: 0 12px;
+}
+
+.schedule__content--timepicker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
 }
 
 .schedule__content--button {
   display: flex;
 }
 
+.react-time-picker__wrapper {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+  outline: none;
+  margin: 0 0 0 12px;
+}
+
+.react-time-picker__button,
+.react-time-picker__inputGroup {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #5f2eea;
+  padding: 7px 14px !important;
+  border-radius: 8px;
+}
+
+.react-time-picker__clear-button,
+.react-time-picker__clock-button {
+  margin-top: 8px;
+  padding: 8px !important;
+}
+
 .schedule__content--button button {
   width: 100%;
+  border: 1px solid #5f2eea;
+  background-color: #5f2eea;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
 }
 
 .schedule__content--button button:nth-child(1) {
   margin: 16px 12px 0 0;
+  background-color: #fff;
+  color: #5f2eea;
 }
 
 .schedule__content--button button:nth-child(2) {
@@ -96,31 +198,63 @@
 
 .data--dropdown select {
   margin: 0 12px;
-  width: 100px;
+  width: 100%;
   border-radius: 8px;
   background-color: #fff;
-}
-
-.schedule__layout {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.schedule__booking {
-  margin: 12px;
   padding: 12px;
-  border: 1px solid #dedede;
-  border-radius: 8px;
+}
+
+.schedule__content--date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 12px 0;
+}
+
+.schedule__update {
+  display: flex;
+  justify-content: space-between !important;
 }
 
 .schedule__content--date button {
-  width: 100%;
-  margin: 8px 0;
   border: none;
   background-color: #fff;
   font-size: 14px;
   font-weight: 400;
+}
+
+.schedule__content--price p,
+.schedule__content--price h6 {
+  margin: 0 !important;
+}
+
+.schedule__update--button button {
+  border: 1px solid #5f2eea;
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+}
+
+.schedule__update--button,
+.schedule__delete--button {
+  margin: 12px 0;
+}
+
+.schedule__delete--button button {
+  border: 1px solid #ed2e7e;
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+}
+
+.schedule__content--adress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .schedule__content--adress h4 {
