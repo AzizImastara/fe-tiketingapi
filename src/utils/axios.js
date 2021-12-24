@@ -34,7 +34,7 @@ axiosApiIntance.interceptors.response.use(
     // Do something with response error
     if (error.response.status === 403) {
       localStorage.clear();
-      window.location.href = "/Login";
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }

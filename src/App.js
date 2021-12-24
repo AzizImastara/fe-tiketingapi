@@ -5,7 +5,7 @@ import BasicLogin from "./pages/basic/Login";
 import BasicHome from "./pages/basic/Home";
 import BasicMovieDetail from "./pages/basic/DetailMovie";
 import BasicOrder from "./pages/basic/Order";
-import Login from "./pages/auth/Login";
+import Login from "./pages/auth/";
 import Register from "./pages/auth/Register";
 import Home from "./pages/main/Home";
 import MovieDetail from "./pages/main/MovieDetail";
@@ -48,7 +48,7 @@ class App extends Component {
               <PublicRoute path="/basic-counter-func" exact component={CounterFunc} />
 
               {/* Public */}
-              <PublicRoute path="/Login" restricted={true} exact component={Login} />
+              <PublicRoute path="/" restricted={true} exact component={Login} />
               <PublicRoute path="/Register" exact component={Register} />
 
               {/* User */}

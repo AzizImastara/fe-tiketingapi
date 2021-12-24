@@ -35,7 +35,7 @@ const Navs = () => {
   };
 
   const handleRouteSwitch = () => {
-    history.push("/Login");
+    history.push("/");
   };
 
   return (
@@ -69,7 +69,7 @@ const Navs = () => {
 
             <Nav className="d-flex justify-content-end w-100 align-items-center">
               <div className="nav--logout">
-                <Link to="/Login" onClick={logOut}>
+                <Link to="/" onClick={logOut}>
                   Logout
                 </Link>
               </div>

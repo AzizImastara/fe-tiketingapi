@@ -110,7 +110,7 @@ const Register = () => {
             </div>
             <div className="sign--register">
               <p>Do you already have an account? </p>
-              <Link to="/Login">Log in</Link>
+              <Link to="/">Log in</Link>
             </div>
             <div className="sign-or">
               <span className="sign-or-line"></span>
