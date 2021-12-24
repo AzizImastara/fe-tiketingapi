@@ -33,8 +33,15 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 - npm install
 - npm start
 
+### Backend
+
+- [Ticketing Backend](https://github.com/AzizImastara/TicketingAPI)
+
 ### Deploy
 
+- Soon
 
 ### Screenshot
+
+- Soon
 
