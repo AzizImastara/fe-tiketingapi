@@ -1,6 +1,6 @@
 <div align="center">
   </a>
-  <h3 align="center">Ticketing</h3>
+  <h2 align="center">Ticketing</h2>
 </div>
 
 ## About The Project
@@ -13,17 +13,17 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML?retiredLocale=id)
 - [CSS](https://developer.mozilla.org/id/docs/Web/CSS)
-- [React JS](https://en.wikipedia.org/wiki/React_(JavaScript_library))
+- [React JS](https://reactjs.org/)
 - [Javascript](https://www.javascript.com/)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
 - [Bootstarp](https://getbootstrap.com/)
 
 ### Feature
 
--Email Validation
--Register
--Login
--Pemesanan ticket
--Mengatur film dan jadwal film oleh admin, seperti hapus, tambah, dan ubah
--Order history yang memungkinkan custommer untuk melihat semua tiket yang pernah dipesan baik yang sudah terpakai maupun yang masih aktif
+- Email Validation
+- Register
+- Login
+- Pemesanan ticket
+- Mengatur film dan jadwal film oleh admin, seperti hapus, tambah, dan ubah
+- Order history yang memungkinkan custommer untuk melihat semua tiket yang pernah dipesan baik yang sudah terpakai maupun yang masih aktif
 
