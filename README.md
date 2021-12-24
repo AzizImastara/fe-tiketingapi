@@ -27,3 +27,14 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 - Mengatur film dan jadwal film oleh admin, seperti hapus, tambah, dan ubah
 - Order history yang memungkinkan custommer untuk melihat semua tiket yang pernah dipesan baik yang sudah terpakai maupun yang masih aktif
 
+### Installation
+
+- Clone Project: https://github.com/AzizImastara/fe-tiketingapi.git
+- npm install
+- npm start
+
+### Deploy
+
+
+### Screenshot
+
