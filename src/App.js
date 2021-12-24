@@ -5,7 +5,7 @@ import BasicLogin from "./pages/basic/Login";
 import BasicHome from "./pages/basic/Home";
 import BasicMovieDetail from "./pages/basic/DetailMovie";
 import BasicOrder from "./pages/basic/Order";
-import Login from "./pages/auth/";
+import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/main/Home";
 import MovieDetail from "./pages/main/MovieDetail";
