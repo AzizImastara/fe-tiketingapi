@@ -45,8 +45,28 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 
 #### Login
 
-- <img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/login.png" alt="login" />
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/login.png" alt="login" />
 
 #### Home
 
-- <img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/home.png" alt="home" />
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/home.png" alt="home" />
+
+#### Movie Detail
+
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/movie.png" alt="movie" />
+
+#### Order
+
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/order.png" alt="order" />
+
+#### Payment
+
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/payment.png" alt="payment" />
+
+#### Ticket
+
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/tiket.png" alt="tiket" />
+
+#### Profile
+
+<img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/profile.png" alt="profile" />
