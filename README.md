@@ -5,7 +5,7 @@
 
 ## About The Project
 
-Ticketing adalah aplikasi pemesanan tiket film yang berbasis onine. 
+Ticketing adalah aplikasi pemesanan tiket film yang berbasis onine.
 
 Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat jadwal film yang sedang tayang, dan daftar film yang akan tayang. User pada aplikasi ini dibagi menjadi dua role, yaitu custommer dan admin. Untuk role admin, dimungkinkan untuk melakukan perubahan, penambahan dan menghapus detail film maupun jadwal film, sedangkan untuk role custommer, dapat memesan lebih dari satu tiket pada satu kali transaksi.
 
@@ -39,9 +39,8 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 
 ### Deploy
 
-- Soon
+- https://ticketings.netlify.app/
 
 ### Screenshot
 
-- Soon
-
+- <img src="https://github.com/AzizImastara/fe-tiketingapi/tree/master/public/readme/login.png">
