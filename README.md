@@ -43,4 +43,10 @@ Pada aplikasi Ticketing ini custommer dapat melakukan pemesanan tiket, melihat j
 
 ### Screenshot
 
-- <img src="https://github.com/AzizImastara/fe-tiketingapi/tree/master/public/readme/login.png">
+#### Login
+
+- <img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/login.png" alt="login" />
+
+#### Home
+
+- <img src="https://github.com/AzizImastara/fe-tiketingapi/blob/master/public/readme/home.png" alt="home" />
